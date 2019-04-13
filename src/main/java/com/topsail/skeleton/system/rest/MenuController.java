@@ -2,6 +2,7 @@ package com.topsail.skeleton.system.rest;
 
 import com.topsail.skeleton.system.domain.Menu;
 import com.topsail.skeleton.system.service.MenuService;
+import com.topsail.skeleton.system.util.TreeNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,4 +40,9 @@ public class MenuController {
         return menuService.updateByPrimaryKey(record);
     }
 
+    @RequestMapping(value = "/tree")
+    public List<TreeNode> getDeptTree() {
+        List<TreeNode> tree = menuService.menuTree();
+        return tree;
+    }
 }

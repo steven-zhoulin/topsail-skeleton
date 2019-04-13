@@ -1,6 +1,7 @@
 package com.topsail.skeleton.system.service;
 
 import com.topsail.skeleton.system.domain.Menu;
+import com.topsail.skeleton.system.util.TreeNode;
 
 import java.util.List;
 
@@ -18,4 +19,8 @@ public interface MenuService {
     List<Menu> selectAll();
 
     int updateByPrimaryKey(Menu record);
+
+    List<TreeNode> menuTree();
+
+
 }
