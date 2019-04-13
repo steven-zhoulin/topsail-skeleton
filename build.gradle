@@ -30,11 +30,9 @@ repositories {
 
 dependencies {
 
-    compile 'org.thymeleaf.thymeleaf:3.0.9.RELEASE'
-    compile 'org.thymeleaf.thymeleaf-spring4:3.0.9.RELEASE'
+//    compile 'org.thymeleaf.thymeleaf:3.0.9.RELEASE'
+//    compile 'org.thymeleaf.thymeleaf-spring4:3.0.9.RELEASE'
     compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
-//    runtime 'org.apache.tomcat.embed:tomcat-embed-jasper'
-//    compile 'javax.servlet:jstl'
 
     // 热发布
     compile 'org.springframework.boot:spring-boot-devtools'
@@ -50,7 +48,8 @@ dependencies {
     runtime 'mysql:mysql-connector-java'
 
 
-    compileOnly 'org.projectlombok:lombok'
+//    compile 'org.projectlombok:lombok'
+    compile 'org.projectlombok:lombok:1.18.6'
 
 
 
