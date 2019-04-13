@@ -40,7 +40,7 @@ public class MenuController {
         return menuService.updateByPrimaryKey(record);
     }
 
-    @RequestMapping(value = "/tree")
+    @GetMapping(value = "/tree")
     public List<TreeNode> getDeptTree() {
         List<TreeNode> tree = menuService.menuTree();
         return tree;
