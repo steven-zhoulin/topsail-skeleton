@@ -1,7 +1,5 @@
 $(function () {
     $('#menu-tree').tree({
-        url: 'api/system/menu/tree',
-        lines: true,
         onClick: function (node) {
             openTab(node.text, node.url);
         }
