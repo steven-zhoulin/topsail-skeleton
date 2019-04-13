@@ -4,6 +4,9 @@ import com.topsail.skeleton.system.domain.DictDetail;
 
 import java.util.List;
 
+/**
+ * @author Steven
+ */
 public interface DictDetailService {
 
     int deleteByPrimaryKey(Long id);

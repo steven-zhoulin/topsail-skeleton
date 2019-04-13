@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service("menuService")
+@Service
 public class MenuServiceImpl implements MenuService {
 
     @Autowired

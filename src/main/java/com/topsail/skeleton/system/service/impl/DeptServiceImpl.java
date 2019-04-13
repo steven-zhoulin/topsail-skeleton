@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * @author Steven
  */
-@Service("deptService")
+@Service
 public class DeptServiceImpl implements DeptService {
 
     @Autowired

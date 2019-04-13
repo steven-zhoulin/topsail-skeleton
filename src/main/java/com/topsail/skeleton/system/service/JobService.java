@@ -1,11 +1,12 @@
 package com.topsail.skeleton.system.service;
 
 import com.topsail.skeleton.system.domain.Job;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+/**
+ * @author Steven
+ */
 public interface JobService {
 
     int deleteByPrimaryKey(Long id);

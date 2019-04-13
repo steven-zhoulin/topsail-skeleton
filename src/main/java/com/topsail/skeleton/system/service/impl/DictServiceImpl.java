@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service("dictService")
+@Service
 public class DictServiceImpl implements DictService {
 
     @Autowired

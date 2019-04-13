@@ -4,6 +4,9 @@ import com.topsail.skeleton.system.domain.Menu;
 
 import java.util.List;
 
+/**
+ * @author Steven
+ */
 public interface MenuService {
 
     int deleteByPrimaryKey(Long id);

@@ -1,14 +1,12 @@
 package com.topsail.skeleton.system.service;
 
 import com.topsail.skeleton.system.domain.User;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
- * @author steven.zhou
+ * @author Steven
  */
-@Service
 public interface UserService {
 
     List<User> selectAll();

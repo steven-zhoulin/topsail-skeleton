@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service("jobService")
+@Service
 public class JobServiceImpl implements JobService {
 
     @Autowired
