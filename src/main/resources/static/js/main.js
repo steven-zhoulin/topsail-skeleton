@@ -7,7 +7,7 @@ $(function () {
 });
 
 function addTab(url, text, iconCls) {
-    var content = "<iframe frameborder='0' scrolling='auto' style='width:100%;height:100%' src='/views/" + url + "'></iframe>";
+    var content = "<iframe frameborder='0' scrolling='auto' style='width:100%;height:100%' src='" + url + "'></iframe>";
     $("#tabs").tabs("add", {
         title: text,
         iconCls: iconCls,

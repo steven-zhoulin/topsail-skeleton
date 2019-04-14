@@ -20,6 +20,11 @@ public class Application {
         return "main";
     }
 
+    @RequestMapping("/system-dict")
+    public String systemDict() {
+        return "system/dict";
+    }
+
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }

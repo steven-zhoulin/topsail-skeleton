@@ -15,7 +15,7 @@ public class JobController {
     JobService jobService;
 
     @DeleteMapping("/{id}")
-    public int deleteByPrimaryKey(Long id) {
+    public int deleteByPrimaryKey(@PathVariable Long id) {
         return jobService.deleteByPrimaryKey(id);
     }
 
@@ -25,7 +25,7 @@ public class JobController {
     }
 
     @GetMapping("/{id}")
-    public Job selectByPrimaryKey(Long id) {
+    public Job selectByPrimaryKey(@PathVariable Long id) {
         return jobService.selectByPrimaryKey(id);
     }
 

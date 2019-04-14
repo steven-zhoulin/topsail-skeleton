@@ -51,7 +51,7 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
-    public int deleteByPrimaryKey(Long id) {
+    public int deleteByPrimaryKey(@PathVariable Long id) {
         return userService.deleteByPrimaryKey(id);
     }
 

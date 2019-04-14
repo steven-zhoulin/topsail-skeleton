@@ -15,7 +15,7 @@ public class RoleController {
     RoleService roleService;
 
     @DeleteMapping("/{id}")
-    public int deleteByPrimaryKey(Long id) {
+    public int deleteByPrimaryKey(@PathVariable Long id) {
         return roleService.deleteByPrimaryKey(id);
     }
 
@@ -25,7 +25,7 @@ public class RoleController {
     }
 
     @GetMapping("/{id}")
-    public Role selectByPrimaryKey(Long id) {
+    public Role selectByPrimaryKey(@PathVariable Long id) {
         return roleService.selectByPrimaryKey(id);
     }
 

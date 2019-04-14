@@ -25,7 +25,7 @@ public class DeptController {
     }
 
     @GetMapping("/{id}")
-    public Dept selectByPrimaryKey(Long id) {
+    public Dept selectByPrimaryKey(@PathVariable Long id) {
         return deptService.selectByPrimaryKey(id);
     }
 
@@ -35,7 +35,7 @@ public class DeptController {
     }
 
     @DeleteMapping("/{id}")
-    public int deleteByPrimaryKey(Long id) {
+    public int deleteByPrimaryKey(@PathVariable Long id) {
         return deptService.deleteByPrimaryKey(id);
     }
 

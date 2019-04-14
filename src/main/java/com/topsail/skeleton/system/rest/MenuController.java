@@ -16,7 +16,7 @@ public class MenuController {
     MenuService menuService;
 
     @DeleteMapping("/{id}")
-    public int deleteByPrimaryKey(Long id) {
+    public int deleteByPrimaryKey(@PathVariable Long id) {
         return menuService.deleteByPrimaryKey(id);
     }
 
@@ -26,7 +26,7 @@ public class MenuController {
     }
 
     @GetMapping("/{id}")
-    public Menu selectByPrimaryKey(Long id) {
+    public Menu selectByPrimaryKey(@PathVariable Long id) {
         return menuService.selectByPrimaryKey(id);
     }
 

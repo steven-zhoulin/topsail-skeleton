@@ -1,5 +1,6 @@
 package com.topsail.skeleton.system.rest;
 
+import com.topsail.skeleton.RestResult;
 import com.topsail.skeleton.system.domain.Dict;
 import com.topsail.skeleton.system.service.DictService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +16,14 @@ public class DictController {
     DictService dictService;
 
     @DeleteMapping("/{id}")
-    public int deleteByPrimaryKey(Long id) {
-        return dictService.deleteByPrimaryKey(id);
+    public RestResult deleteByPrimaryKey(@PathVariable Long id) {
+        RestResult restResult = new RestResult();
+        int ret = dictService.deleteByPrimaryKey(id);
+        if (1 != ret) {
+            restResult.setSuccess(false);
+            restResult.setMessage("删除失败!");
+        }
+        return restResult;
     }
 
     @PostMapping("")
@@ -25,7 +32,7 @@ public class DictController {
     }
 
     @GetMapping("/{id}")
-    public Dict selectByPrimaryKey(Long id) {
+    public Dict selectByPrimaryKey(@PathVariable Long id) {
         return dictService.selectByPrimaryKey(id);
     }
 

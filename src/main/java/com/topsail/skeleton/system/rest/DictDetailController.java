@@ -15,7 +15,7 @@ public class DictDetailController {
     DictDetailService dictDetailService;
 
     @DeleteMapping("/{id}")
-    public int deleteByPrimaryKey(Long id) {
+    public int deleteByPrimaryKey(@PathVariable Long id) {
         return dictDetailService.deleteByPrimaryKey(id);
     }
 
@@ -25,7 +25,7 @@ public class DictDetailController {
     }
 
     @GetMapping("/{id}")
-    public DictDetail selectByPrimaryKey(Long id) {
+    public DictDetail selectByPrimaryKey(@PathVariable Long id) {
         return dictDetailService.selectByPrimaryKey(id);
     }
 

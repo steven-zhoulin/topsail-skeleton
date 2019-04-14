@@ -15,7 +15,7 @@ public class PermissionController {
     PermissionService permissionService;
 
     @DeleteMapping("/{id}")
-    public int deleteByPrimaryKey(Long id) {
+    public int deleteByPrimaryKey(@PathVariable Long id) {
         return permissionService.deleteByPrimaryKey(id);
     }
 
@@ -25,7 +25,7 @@ public class PermissionController {
     }
 
     @GetMapping("/{id}")
-    public Permission selectByPrimaryKey(Long id) {
+    public Permission selectByPrimaryKey(@PathVariable Long id) {
         return permissionService.selectByPrimaryKey(id);
     }
 
