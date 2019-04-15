@@ -1,9 +1,10 @@
 package com.topsail.skeleton.system.rest;
 
-import com.topsail.skeleton.RestResult;
+import com.topsail.skeleton.exception.AlreadyExistException;
 import com.topsail.skeleton.system.domain.Dict;
 import com.topsail.skeleton.system.service.DictService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,56 +20,45 @@ public class DictController {
     DictService dictService;
 
     @DeleteMapping("/{id}")
-    public RestResult deleteByPrimaryKey(@PathVariable Long id) {
-        RestResult restResult = new RestResult();
-        int ret = dictService.deleteByPrimaryKey(id);
-        if (1 != ret) {
-            restResult.setSuccess(false);
-            restResult.setMessage("删除失败!");
-        }
-        return restResult;
+    @ResponseStatus(HttpStatus.NO_CONTENT) // 表示删除数据成功
+    public Object deleteByPrimaryKey(@PathVariable Long id) {
+        return dictService.deleteByPrimaryKey(id);
     }
 
     @PostMapping("")
-    public RestResult insert(Dict record) {
-        RestResult restResult = new RestResult();
-        int ret = dictService.insert(record);
-        if (1 != ret) {
-            restResult.setSuccess(false);
-            restResult.setMessage("新增失败!");
-        }
-        return restResult;
+    @ResponseStatus(HttpStatus.CREATED) // 表示创建数据成功
+    public Object insert(Dict record) throws AlreadyExistException {
+        return dictService.insert(record);
     }
 
     @GetMapping("/{id}")
-    public Dict selectByPrimaryKey(@PathVariable Long id) {
+    @ResponseStatus(HttpStatus.OK)
+    public Object selectByPrimaryKey(@PathVariable Long id) {
         return dictService.selectByPrimaryKey(id);
     }
 
     @GetMapping("/list")
+    @ResponseStatus(HttpStatus.OK)
     public List<Dict> selectAll() {
         return dictService.selectAll();
     }
 
     @GetMapping("/selectLikeName")
+    @ResponseStatus(HttpStatus.OK)
     public List<Dict> selectLikeName(@RequestParam("content") String content) {
         return dictService.selectLikeName(content);
     }
 
     @GetMapping("/selectLikeRemark")
+    @ResponseStatus(HttpStatus.OK)
     public List<Dict> selectLikeRemark(@RequestParam("content") String content) {
         return dictService.selectLikeRemark(content);
     }
 
     @PutMapping("/{id}")
-    public RestResult updateByPrimaryKey(Dict record) {
-        RestResult restResult = new RestResult();
-        int ret = dictService.updateByPrimaryKey(record);
-        if (1 != ret) {
-            restResult.setSuccess(false);
-            restResult.setMessage("修改失败!");
-        }
-        return restResult;
+    @ResponseStatus(HttpStatus.CREATED) // 表示更新数据成功
+    public Object updateByPrimaryKey(Dict record) {
+        return dictService.updateByPrimaryKey(record);
     }
 
 }

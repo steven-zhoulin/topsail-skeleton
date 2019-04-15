@@ -1,4 +1,4 @@
-package com.topsail.skeleton;
+package com.topsail.skeleton.common;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
