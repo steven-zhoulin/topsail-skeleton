@@ -35,6 +35,11 @@ public class DictDetailServiceImpl implements DictDetailService {
     }
 
     @Override
+    public List<DictDetail> search(Long dictId) {
+        return dictDetailMapper.search(dictId);
+    }
+
+    @Override
     public int updateByPrimaryKey(DictDetail record) {
         return dictDetailMapper.updateByPrimaryKey(record);
     }

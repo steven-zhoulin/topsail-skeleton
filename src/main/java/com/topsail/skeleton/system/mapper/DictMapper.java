@@ -54,6 +54,26 @@ public interface DictMapper {
     })
     List<Dict> selectAll();
 
+    @Select({
+            "select id, name, remark from dict where name LIKE CONCAT('%',#{content},'%')"
+    })
+    @Results({
+            @Result(column = "id", property = "id", jdbcType = JdbcType.BIGINT, id = true),
+            @Result(column = "name", property = "name", jdbcType = JdbcType.VARCHAR),
+            @Result(column = "remark", property = "remark", jdbcType = JdbcType.VARCHAR)
+    })
+    List<Dict> selectLikeName(String content);
+
+    @Select({
+            "select id, name, remark from dict where remark LIKE CONCAT('%',#{content},'%')"
+    })
+    @Results({
+            @Result(column = "id", property = "id", jdbcType = JdbcType.BIGINT, id = true),
+            @Result(column = "name", property = "name", jdbcType = JdbcType.VARCHAR),
+            @Result(column = "remark", property = "remark", jdbcType = JdbcType.VARCHAR)
+    })
+    List<Dict> selectLikeRemark(String content);
+
     @Update({
             "update dict",
             "set name = #{name,jdbcType=VARCHAR},",

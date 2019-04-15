@@ -58,8 +58,20 @@ public interface DictDetailMapper {
     })
     List<DictDetail> selectAll();
 
+    @Select({
+            "select id, label, value, sort, dict_id from dict_detail where dict_id = #{dict_id} order by sort"
+    })
+    @Results({
+            @Result(column="id", property="id", jdbcType=JdbcType.BIGINT, id=true),
+            @Result(column="label", property="label", jdbcType=JdbcType.VARCHAR),
+            @Result(column="value", property="value", jdbcType=JdbcType.VARCHAR),
+            @Result(column="sort", property="sort", jdbcType=JdbcType.VARCHAR),
+            @Result(column="dict_id", property="dictId", jdbcType=JdbcType.BIGINT)
+    })
+    List<DictDetail> search(Long dictId);
+
     @Update({
-        "updateByPrimaryKey dict_detail",
+        "update dict_detail",
         "set label = #{label,jdbcType=VARCHAR},",
           "value = #{value,jdbcType=VARCHAR},",
           "sort = #{sort,jdbcType=VARCHAR},",

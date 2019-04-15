@@ -35,6 +35,16 @@ public class DictServiceImpl implements DictService {
     }
 
     @Override
+    public List<Dict> selectLikeName(String content) {
+        return dictMapper.selectLikeName(content);
+    }
+
+    @Override
+    public List<Dict> selectLikeRemark(String content) {
+        return dictMapper.selectLikeRemark(content);
+    }
+
+    @Override
     public int updateByPrimaryKey(Dict record) {
         return dictMapper.updateByPrimaryKey(record);
     }

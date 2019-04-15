@@ -34,14 +34,25 @@
             </tr>
             </thead>
         </table>
-        <div id="toolbarDict">
-            <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="addDict()">新增</a>
-            <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editDict()">编辑</a>
-            <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="deleteDict()">删除</a>
+
+        <div id="toolbarDict" style="padding:5px;height:auto">
+            <div style="margin-bottom:5px">
+                <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="addDict()">新增</a>
+                <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editDict()">编辑</a>
+                <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="deleteDict()">删除</a>
+            </div>
+            <div>
+                <input id="searchContent" name="searchContent" class="easyui-textbox" style="width:150px" data-options="prompt:'输入名称...'" />
+                <select id="searchType" name="searchType" class="easyui-combobox" panelHeight="auto" style="width:100px" data-options="prompt:'选择类型...'">
+                    <option value="name">字典名称</option>
+                    <option value="remark">字典描述</option>
+                </select>
+                <a href="#" class="easyui-linkbutton" iconCls="icon-search" onclick="searchDict()">搜索</a>
+            </div>
         </div>
 
         <div id="dlgDict" class="easyui-dialog" style="width:400px"
-             data-options="closed:true,modal:true,border:'thin',buttons:'#dlg-buttons'">
+             data-options="closed:true,modal:true,border:'thin',buttons:'#dlgDict-buttons'">
             <form id="fmDict" method="post" novalidate="false" style="margin:0;padding:20px 50px">
                 <h3>字典信息</h3>
                 <div style="margin-bottom:10px">
@@ -53,8 +64,8 @@
             </form>
         </div>
 
-        <div id="dlg-buttons">
-            <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="save()"
+        <div id="dlgDict-buttons">
+            <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="saveDict()"
                style="width:90px">Save</a>
             <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel"
                onclick="javascript:$('#dlg').dialog('close')" style="width:90px">Cancel</a>
@@ -62,9 +73,8 @@
 
     </div>
     <div data-options="region:'center',title:''" border="false">
-        <table class="easyui-datagrid" title="字典详情" fit="true"
+        <table id="dgDictDetail" class="easyui-datagrid" title="字典详情" fit="true"
                data-options="singleSelect:true,collapsible:false,method:'get'"
-               url="api/system/dictDetail/list"
                toolbar="#toolbarDictDetail">
             <thead>
             <tr>
@@ -72,6 +82,7 @@
                 <th data-options="field:'label',width:100">字典标签</th>
                 <th data-options="field:'value',width:80">字典值</th>
                 <th data-options="field:'sort',width:80">排序</th>
+                <th data-options="field:'dictId',width:80">字典ID</th>
             </tr>
             </thead>
         </table>
@@ -79,6 +90,32 @@
             <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="addDictDetail()">新增</a>
             <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editDictDetail()">编辑</a>
             <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="deleteDictDetail()">删除</a>
+        </div>
+
+        <div id="dlgDictDetail" class="easyui-dialog" style="width:400px"
+             data-options="closed:true,modal:true,border:'thin',buttons:'#dlgDictDetail-buttons'">
+            <form id="fmDictDetail" method="post" novalidate="false" style="margin:0;padding:20px 50px">
+                <h3>字典详情</h3>
+                <div style="margin-bottom:10px">
+                    <input name="dictId" id="dictId" class="easyui-textbox" readonly="true" label="字典ID:" style="width:100%" />
+                </div>
+                <div style="margin-bottom:10px">
+                    <input name="label" class="easyui-textbox" required="true" label="字典标签:" style="width:100%" />
+                </div>
+                <div style="margin-bottom:10px">
+                    <input name="value" class="easyui-textbox" required="true" label="字典值:" style="width:100%" />
+                </div>
+                <div style="margin-bottom:10px">
+                    <input name="sort" class="easyui-textbox" required="true" label="排序:" style="width:100%" />
+                </div>
+            </form>
+        </div>
+
+        <div id="dlgDictDetail-buttons">
+            <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="saveDictDetail()"
+               style="width:90px">Save</a>
+            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel"
+               onclick="javascript:$('#dlg').dialog('close')" style="width:90px">Cancel</a>
         </div>
     </div>
 

@@ -17,5 +17,8 @@ public interface DictService {
 
     List<Dict> selectAll();
 
+    List<Dict> selectLikeName(String content);
+    List<Dict> selectLikeRemark(String content);
+
     int updateByPrimaryKey(Dict record);
 }

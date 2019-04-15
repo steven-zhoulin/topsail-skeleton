@@ -17,6 +17,8 @@ public interface DictDetailService {
 
     List<DictDetail> selectAll();
 
+    List<DictDetail> search(Long dictId);
+
     int updateByPrimaryKey(DictDetail record);
 
 }

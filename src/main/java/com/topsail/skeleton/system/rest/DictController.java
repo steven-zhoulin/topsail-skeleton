@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * @author Steven
+ */
 @RestController
 @RequestMapping("api/system/dict")
 public class DictController {
@@ -27,8 +30,14 @@ public class DictController {
     }
 
     @PostMapping("")
-    public int insert(Dict record) {
-        return dictService.insert(record);
+    public RestResult insert(Dict record) {
+        RestResult restResult = new RestResult();
+        int ret = dictService.insert(record);
+        if (1 != ret) {
+            restResult.setSuccess(false);
+            restResult.setMessage("新增失败!");
+        }
+        return restResult;
     }
 
     @GetMapping("/{id}")
@@ -41,9 +50,25 @@ public class DictController {
         return dictService.selectAll();
     }
 
+    @GetMapping("/selectLikeName")
+    public List<Dict> selectLikeName(@RequestParam("content") String content) {
+        return dictService.selectLikeName(content);
+    }
+
+    @GetMapping("/selectLikeRemark")
+    public List<Dict> selectLikeRemark(@RequestParam("content") String content) {
+        return dictService.selectLikeRemark(content);
+    }
+
     @PutMapping("/{id}")
-    public int updateByPrimaryKey(Dict record) {
-        return dictService.updateByPrimaryKey(record);
+    public RestResult updateByPrimaryKey(Dict record) {
+        RestResult restResult = new RestResult();
+        int ret = dictService.updateByPrimaryKey(record);
+        if (1 != ret) {
+            restResult.setSuccess(false);
+            restResult.setMessage("修改失败!");
+        }
+        return restResult;
     }
 
 }
