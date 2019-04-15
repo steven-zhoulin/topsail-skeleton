@@ -5,15 +5,19 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author Steven
  */
-@Api("swaggerDemoController相关的api")
+@Api("Topsail skeleton 相关 API")
 @SpringBootApplication
 @Controller
-public class Application {
+public class AppRun {
+
+    public static void main(String[] args) {
+        // 启动
+        SpringApplication.run(AppRun.class, args);
+    }
 
     @RequestMapping("/main")
     public String main() {
@@ -25,8 +29,6 @@ public class Application {
         return "system/dict";
     }
 
-    public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
-    }
+
 
 }
