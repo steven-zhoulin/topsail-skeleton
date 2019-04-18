@@ -1,6 +1,7 @@
 package com.topsail.skeleton.system.service;
 
 import com.topsail.skeleton.system.domain.Dept;
+import com.topsail.skeleton.system.util.TreeNode;
 
 import java.util.List;
 
@@ -19,4 +20,5 @@ public interface DeptService {
 
     int updateByPrimaryKey(Dept record);
 
+    List<TreeNode> getDeptTree();
 }

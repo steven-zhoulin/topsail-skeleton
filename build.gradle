@@ -38,6 +38,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator' // 监控
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
+    implementation 'commons-beanutils:commons-beanutils:1.9.3'
+
 
     // 代码补全
     implementation 'org.projectlombok:lombok:1.18.6'

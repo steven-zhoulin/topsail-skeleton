@@ -4,6 +4,7 @@ import io.swagger.annotations.Api;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -19,21 +20,24 @@ public class AppRun {
         SpringApplication.run(AppRun.class, args);
     }
 
-    @RequestMapping("/")
+    @GetMapping("/")
     public String index() {
         return "redirect:main";
     }
 
-    @RequestMapping("/main")
+    @GetMapping("/main")
     public String main() {
         return "main";
     }
 
-    @RequestMapping("/system-dict")
+    @GetMapping("/system-dict")
     public String systemDict() {
         return "system/dict";
     }
 
-
+    @GetMapping("/system-job")
+    public String systemJob() {
+        return "system/job";
+    }
 
 }

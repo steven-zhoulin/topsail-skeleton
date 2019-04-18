@@ -1,21 +1,24 @@
 package com.topsail.skeleton.system.service;
 
+import com.topsail.skeleton.common.IResult;
 import com.topsail.skeleton.system.domain.Job;
-
-import java.util.List;
 
 /**
  * @author Steven
  */
 public interface JobService {
 
-    int deleteByPrimaryKey(Long id);
+    IResult deleteByPrimaryKey(Long id);
 
-    int insert(Job record);
+    IResult insert(Job record);
 
-    Job selectByPrimaryKey(Long id);
+    IResult selectByPrimaryKey(Long id);
 
-    List<Job> selectAll();
+    IResult selectAll();
 
-    int updateByPrimaryKey(Job record);
+    IResult selectAllWithDeptName();
+
+    IResult selectLikeName(String content, boolean enabled);
+
+    IResult updateByPrimaryKey(Job record);
 }

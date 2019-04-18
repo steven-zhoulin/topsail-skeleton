@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Skeleton</title>
+
+    <link rel="stylesheet" href="../../static/easyui/themes/default/easyui.css"
+          th:href="@{/easyui/themes/default/easyui.css}"/>
+    <link rel="stylesheet" href="../../static/easyui/themes/icon.css" th:href="@{/easyui/themes/icon.css}"/>
+    <link rel="stylesheet" href="../../static/easyui/demo/demo.css" th:href="@{/easyui/demo/demo.css}"/>
+
+    <script src="../../static/easyui/jquery.min.js" th:src="@{/easyui/jquery.min.js}"></script>
+    <script src="../../static/easyui/jquery.easyui.min.js" th:src="@{/easyui/jquery.easyui.min.js}"></script>
+    <script src="../../static/easyui/locale/easyui-lang-zh_CN.js" th:src="@{/easyui/locale/easyui-lang-zh_CN.js}"></script>
+
+    <script src="../../static/js/system/job.js" th:src="@{/js/system/job.js}"></script>
+
+</head>
+
+<body>
+
+
+<table id="dgJob" class="easyui-datagrid" title="岗位管理" fit="true"
+       data-options="singleSelect:true,collapsible:false,method:'get'"
+       url="api/system/job/listWithDeptName"
+       toolbar="#toolbarJob">
+    <thead>
+    <tr>
+        <th data-options="field:'id',width:80">ID</th>
+        <th data-options="field:'name',width:100">名称</th>
+        <th data-options="field:'enabled',formatter:dislayEnabled,width:100">状态</th>
+        <th data-options="field:'createTime',width:200">创建日期</th>
+        <th data-options="field:'sort',width:100">排序</th>
+        <th data-options="field:'deptName',width:100">所属部门</th>
+    </tr>
+    </thead>
+</table>
+
+<div id="toolbarJob" style="padding:5px;height:auto">
+    <div style="margin-bottom:5px">
+        <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="addJob()">新增</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editJob()">编辑</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="deleteJob()">删除</a>
+    </div>
+    <div>
+        <input id="searchContent" name="searchContent" class="easyui-textbox" style="width:150px"
+               data-options="prompt:'输入岗位名称搜索...'"/>
+        <select id="searchType" name="searchType" class="easyui-combobox" panelHeight="auto" style="width:100px" data-options="prompt:'选择类型...'">
+            <option value="true">正常</option>
+            <option value="false">禁用</option>
+        </select>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-search" onclick="searchJob()">搜索</a>
+    </div>
+</div>
+
+<div id="dlgJob" class="easyui-dialog" style="width:400px"
+     data-options="closed:true,modal:true,border:'thin',buttons:'#dlgJob-buttons'">
+    <form id="fmJob" method="post" novalidate="false" style="margin:0;padding:20px 50px">
+        <h3>岗位信息</h3>
+        <div style="margin-bottom:10px">
+            <input name="name" class="easyui-textbox" required="true" label="名称:" style="width:100%"/>
+        </div>
+        <div style="margin-bottom:10px">
+            <input name="sort" class="easyui-textbox" required="true" label="排序:" style="width:100%"/>
+        </div>
+        <div style="margin-bottom:10px">
+            <select id="deptId" name="deptId" class="easyui-combotree" label="部门:" style="width:100%;" data-options="url:'api/system/dept/tree',required:true"></select>
+        </div>
+        <div style="margin-bottom:10px">
+            <label class="textbox-label textbox-label-before" style="text-align: left; height: 30px; line-height: 30px;">状态:</label>
+            <input name="enabled" id="enabledId" class="easyui-switchbutton" checked data-options="onText:'正常',offText:'禁用'">
+        </div>
+    </form>
+</div>
+
+<div id="dlgJob-buttons">
+    <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="saveJob()"
+       style="width:90px">Save</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel"
+       onclick="javascript:$('#dlg').dialog('close')" style="width:90px">Cancel</a>
+</div>
+
+
+</body>
+</html>

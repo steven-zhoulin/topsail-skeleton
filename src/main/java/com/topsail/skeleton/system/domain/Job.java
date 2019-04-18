@@ -6,11 +6,14 @@ import lombok.Data;
 
 @Data
 public class Job implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     private Long id;
 
     private String name;
 
-    private Boolean enabled;
+    private Boolean enabled = false;
 
     private Date createTime;
 
@@ -18,5 +21,5 @@ public class Job implements Serializable {
 
     private Long deptId;
 
-    private static final long serialVersionUID = 1L;
+    private Dept dept;
 }
