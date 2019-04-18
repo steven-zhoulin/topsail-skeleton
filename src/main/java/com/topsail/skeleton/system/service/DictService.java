@@ -1,26 +1,25 @@
 package com.topsail.skeleton.system.service;
 
+import com.topsail.skeleton.common.IResult;
 import com.topsail.skeleton.exception.AlreadyExistException;
 import com.topsail.skeleton.exception.NotFoundException;
 import com.topsail.skeleton.system.domain.Dict;
-
-import java.util.List;
 
 /**
  * @author Steven
  */
 public interface DictService {
 
-    int deleteByPrimaryKey(Long id) throws NotFoundException;
+    IResult deleteByPrimaryKey(Long id) throws NotFoundException;
 
-    int insert(Dict record) throws AlreadyExistException;
+    IResult insert(Dict record) throws AlreadyExistException;
 
-    Dict selectByPrimaryKey(Long id) throws NotFoundException;
+    IResult selectByPrimaryKey(Long id) throws NotFoundException;
 
-    List<Dict> selectAll();
+    IResult selectAll();
 
-    List<Dict> selectLikeName(String content);
-    List<Dict> selectLikeRemark(String content);
+    IResult selectLikeName(String content);
+    IResult selectLikeRemark(String content);
 
-    int updateByPrimaryKey(Dict record) throws NotFoundException;
+    IResult updateByPrimaryKey(Dict record) throws NotFoundException;
 }

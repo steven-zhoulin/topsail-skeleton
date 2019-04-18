@@ -19,6 +19,11 @@ public class AppRun {
         SpringApplication.run(AppRun.class, args);
     }
 
+    @RequestMapping("/")
+    public String index() {
+        return "redirect:main";
+    }
+
     @RequestMapping("/main")
     public String main() {
         return "main";

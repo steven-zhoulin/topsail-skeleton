@@ -12,6 +12,7 @@ $(function () {
     });
 });
 
+
 function addDict() {
     $('#dlgDict').dialog('open').dialog('center').dialog('setTitle', '新增');
     $('#fmDict').form('clear');
@@ -38,14 +39,16 @@ function deleteDict() {
     if (row) {
         $.messager.confirm('信息', '确认删除?', function (r) {
             if (r) {
-                $.post('api/system/dict/' + row.id + '?_method=delete', function (result) {
-                    if (result.success) {
-                        $('#dgDict').datagrid('reload');
-                    } else {
+                $.post('api/system/dict/' + row.id + '?_method=delete',
+
+                    function (result) {
+                    if (result.code) {
                         $.messager.show({
-                            title: 'Error',
+                            title: '异常',
                             msg: result.message
                         });
+                    } else {
+                        $('#dgDict').datagrid('reload');
                     }
                 }, 'json');
             }
@@ -61,14 +64,14 @@ function saveDict() {
         },
         success: function (result) {
             var result = eval('(' + result + ')');
-            if (result.success) {
-                $('#dlgDict').dialog('close');
-                $('#dgDict').datagrid('reload');
-            } else {
+            if (result.error) {
                 $.messager.show({
                     title: 'Error',
-                    msg: result.message
+                    msg: result.error
                 });
+            } else {
+                $('#dlgDict').dialog('close');
+                $('#dgDict').datagrid('reload');
             }
         }
     });
@@ -118,13 +121,13 @@ function deleteDictDetail() {
         $.messager.confirm('信息', '确认删除?', function (r) {
             if (r) {
                 $.post('api/system/dictDetail/' + row.id + '?_method=delete', function (result) {
-                    if (result.success) {
-                        $('#dgDictDetail').datagrid('reload');
-                    } else {
+                    if (result.code) {
                         $.messager.show({
-                            title: 'Error',
+                            title: '异常',
                             msg: result.message
                         });
+                    } else {
+                        $('#dgDictDetail').datagrid('reload');
                     }
                 }, 'json');
             }
@@ -140,14 +143,14 @@ function saveDictDetail() {
         },
         success: function (result) {
             var result = eval('(' + result + ')');
-            if (result.success) {
-                $('#dlgDictDetail').dialog('close');
-                $('#dgDictDetail').datagrid('reload');
-            } else {
+            if (result.error) {
                 $.messager.show({
                     title: 'Error',
-                    msg: result.message
+                    msg: result.error
                 });
+            } else {
+                $('#dlgDictDetail').dialog('close');
+                $('#dgDictDetail').datagrid('reload');
             }
         }
     });

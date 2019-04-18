@@ -1,5 +1,6 @@
 package com.topsail.skeleton.exception.handler;
 
+import com.topsail.skeleton.common.IResult;
 import com.topsail.skeleton.common.Result;
 import com.topsail.skeleton.exception.AlreadyExistException;
 import com.topsail.skeleton.exception.NotFoundException;
@@ -9,8 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import static org.springframework.http.HttpStatus.FORBIDDEN;
-import static org.springframework.http.HttpStatus.NOT_FOUND;
+import static org.springframework.http.HttpStatus.OK;
 
 /**
  * 实现全局异常的拦截处理, 注: @ControllerAdvice 和 @RestControllerAdvice 都会自动注册
@@ -21,20 +21,20 @@ import static org.springframework.http.HttpStatus.NOT_FOUND;
 @RestControllerAdvice
 public class RestExceptionHandler {
 
-    @ExceptionHandler(value = NotFoundException.class)
+    @ExceptionHandler(NotFoundException.class)
     @ResponseBody
-    @ResponseStatus(NOT_FOUND)
-    public Result handleResourceNotFoundException(NotFoundException e) {
+    @ResponseStatus(OK)
+    public IResult handleResourceNotFoundException(NotFoundException e) {
         log.error(e.getMessage(), e);
-        return new Result(e.getMessage(), e.getCode());
+        return Result.failure(e.getCode(), e.getMessage());
     }
 
-    @ExceptionHandler(value = AlreadyExistException.class)
+    @ExceptionHandler(AlreadyExistException.class)
     @ResponseBody
-    @ResponseStatus(FORBIDDEN)
-    public Result handleResourceAlreadyExistException(AlreadyExistException e) {
+    @ResponseStatus(OK)
+    public IResult handleResourceAlreadyExistException(AlreadyExistException e) {
         log.error(e.getMessage(), e);
-        return new Result(e.getMessage(), e.getCode());
+        return Result.failure(e.getCode(), e.getMessage());
     }
 
     /**
@@ -44,9 +44,11 @@ public class RestExceptionHandler {
      * @return
      */
     @ExceptionHandler(Exception.class)
-    public Result handleException(Exception e) {
+    @ResponseBody
+    @ResponseStatus(OK)
+    public IResult handleException(Exception e) {
         log.error(e.getMessage(), e);
-        return new Result(e.getMessage(), -1);
+        return Result.failure(-1, e.getMessage());
     }
 
 }

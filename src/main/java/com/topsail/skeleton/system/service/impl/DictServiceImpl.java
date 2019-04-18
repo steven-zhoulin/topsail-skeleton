@@ -1,11 +1,11 @@
 package com.topsail.skeleton.system.service.impl;
 
-import com.topsail.skeleton.exception.AlreadyExistException;
-import com.topsail.skeleton.exception.NotFoundException;
+import com.topsail.skeleton.common.IResult;
+import com.topsail.skeleton.common.Result;
 import com.topsail.skeleton.system.domain.Dict;
 import com.topsail.skeleton.system.mapper.DictMapper;
 import com.topsail.skeleton.system.service.DictService;
-import com.topsail.skeleton.common.ErrorCode;
+import com.topsail.skeleton.util.ValidationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,67 +14,54 @@ import java.util.List;
 @Service
 public class DictServiceImpl implements DictService {
 
+    private static final String ENTITY_NAME = "dict";
+
     @Autowired
     DictMapper dictMapper;
 
     @Override
-    public int deleteByPrimaryKey(Long id) {
+    public IResult deleteByPrimaryKey(Long id) {
         int ret = dictMapper.deleteByPrimaryKey(id);
-        if (0 == ret) {
-            throw new NotFoundException(
-                    "dict id=" + id + " not found!",
-                    ErrorCode.DICT_NOT_FOUND.getCode());
-        }
-        return ret;
+        ValidationUtil.isNotFound(ret, ENTITY_NAME, "id", id);
+        return Result.success();
     }
 
     @Override
-    public int insert(Dict record) {
+    public IResult insert(Dict record) {
         int ret = dictMapper.insert(record);
-        if (0 == ret) {
-            throw new AlreadyExistException(
-                    "dict id:" + record.getId() + " already exist!",
-                    ErrorCode.DICT_ALREADY_EXIST.getCode()
-            );
-        }
-        return ret;
+        ValidationUtil.isAlreadyExist(ret, ENTITY_NAME, "id", record.getId());
+        return Result.success();
     }
 
     @Override
-    public Dict selectByPrimaryKey(Long id) {
+    public IResult selectByPrimaryKey(Long id) {
         Dict dict = dictMapper.selectByPrimaryKey(id);
-        if (null == dict) {
-            throw new NotFoundException(
-                    "dict id:" + id + " not found!",
-                    ErrorCode.DICT_NOT_FOUND.getCode()
-            );
-        }
-        return dict;
+        ValidationUtil.isNotFound(dict, ENTITY_NAME, "id", id);
+        return Result.success(dict);
     }
 
     @Override
-    public List<Dict> selectAll() {
-        return dictMapper.selectAll();
+    public IResult selectAll() {
+        List<Dict> dicts = dictMapper.selectAll();
+        return Result.success(dicts);
     }
 
     @Override
-    public List<Dict> selectLikeName(String content) {
-        return dictMapper.selectLikeName(content);
+    public IResult selectLikeName(String content) {
+        List<Dict> dicts = dictMapper.selectLikeName(content);
+        return Result.success(dicts);
     }
 
     @Override
-    public List<Dict> selectLikeRemark(String content) {
-        return dictMapper.selectLikeRemark(content);
+    public IResult selectLikeRemark(String content) {
+        List<Dict> dict = dictMapper.selectLikeRemark(content);
+        return Result.success(dict);
     }
 
     @Override
-    public int updateByPrimaryKey(Dict record) {
+    public IResult updateByPrimaryKey(Dict record) {
         int ret = dictMapper.updateByPrimaryKey(record);
-        if (0 == ret) {
-            throw new NotFoundException(
-                    "dict id:" + record.getId() + " not found!",
-                    ErrorCode.DICT_NOT_FOUND.getCode());
-        }
-        return ret;
+        ValidationUtil.isNotFound(ret, ENTITY_NAME, "id", record.getId());
+        return Result.success();
     }
 }

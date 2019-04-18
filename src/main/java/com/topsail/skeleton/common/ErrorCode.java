@@ -1,5 +1,8 @@
 package com.topsail.skeleton.common;
 
+/**
+ * @author Steven
+ */
 public enum ErrorCode {
 
     /**

@@ -10,10 +10,12 @@ import lombok.Setter;
 @Getter
 public class GlobalException extends RuntimeException {
 
+    private String message;
     private int code;
 
     public GlobalException(String message, int code) {
         super(message);
+        this.message = message;
         this.code = code;
     }
 

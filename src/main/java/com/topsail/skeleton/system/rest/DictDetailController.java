@@ -1,5 +1,7 @@
 package com.topsail.skeleton.system.rest;
 
+import com.topsail.skeleton.common.IResult;
+import com.topsail.skeleton.common.Result;
 import com.topsail.skeleton.system.domain.DictDetail;
 import com.topsail.skeleton.system.service.DictDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,38 +21,40 @@ public class DictDetailController {
     DictDetailService dictDetailService;
 
     @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT) // 表示删除数据成功
-    public int deleteByPrimaryKey(@PathVariable Long id) {
-        return dictDetailService.deleteByPrimaryKey(id);
+    @ResponseStatus(HttpStatus.OK) // 表示删除数据成功
+    public IResult deleteByPrimaryKey(@PathVariable Long id) {
+        IResult result = dictDetailService.deleteByPrimaryKey(id);
+        System.out.println("result: " + result);
+        return result;
     }
 
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED) // 表示创建数据成功
-    public int insert(DictDetail record) {
+    public IResult insert(DictDetail record) {
         return dictDetailService.insert(record);
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public DictDetail selectByPrimaryKey(@PathVariable Long id) {
+    public IResult selectByPrimaryKey(@PathVariable Long id) {
         return dictDetailService.selectByPrimaryKey(id);
     }
 
     @GetMapping("/list")
     @ResponseStatus(HttpStatus.OK)
-    public List<DictDetail> selectAll() {
+    public IResult selectAll() {
         return dictDetailService.selectAll();
     }
 
     @GetMapping("/search")
     @ResponseStatus(HttpStatus.OK)
-    public List<DictDetail> search(@RequestParam("dictId") Long dictId) {
+    public IResult search(@RequestParam("dictId") Long dictId) {
         return dictDetailService.search(dictId);
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.CREATED) // 表示修改数据成功
-    public int updateByPrimaryKey(DictDetail record) {
+    public IResult updateByPrimaryKey(DictDetail record) {
         return dictDetailService.updateByPrimaryKey(record);
 
     }

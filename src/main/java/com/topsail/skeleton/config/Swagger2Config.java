@@ -1,4 +1,4 @@
-package com.topsail.skeleton.common;
+package com.topsail.skeleton.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,9 +11,12 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+/**
+ * @author Steven
+ */
 @Configuration
 @EnableSwagger2
-public class Swagger2 {
+public class Swagger2Config {
 
     /**
      * swagger2 的配置文件，这里可以配置 swagger2 的一些基本的内容，比如扫描的包等
