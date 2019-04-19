@@ -25,12 +25,13 @@
         <table id="dgDict" class="easyui-datagrid" title="字典列表" fit="true"
                data-options="singleSelect:true,collapsible:false,method:'get'"
                url="api/system/dict/list"
+               remoteSort="false"
                toolbar="#toolbarDict">
             <thead>
             <tr>
-                <th data-options="field:'id',width:80">ID</th>
-                <th data-options="field:'name',width:100">名称</th>
-                <th data-options="field:'remark',width:100">描述</th>
+                <th data-options="field:'id',width:80,align:'center',halign:'center',sortable:'true'">ID</th>
+                <th data-options="field:'name',width:100,align:'center',halign:'center',sortable:'true'">名称</th>
+                <th data-options="field:'remark',width:100,align:'center',halign:'center'">描述</th>
             </tr>
             </thead>
         </table>
@@ -73,16 +74,16 @@
 
     </div>
     <div data-options="region:'center',title:''" border="false">
-        <table id="dgDictDetail" class="easyui-datagrid" title="字典详情" fit="true"
+        <table id="dgDictDetail" class="easyui-datagrid" title="字典详情" fit="true" remoteSort="false"
                data-options="singleSelect:true,collapsible:false,method:'get'"
                toolbar="#toolbarDictDetail">
             <thead>
             <tr>
-                <th data-options="field:'id',width:80">ID</th>
-                <th data-options="field:'label',width:100">字典标签</th>
-                <th data-options="field:'value',width:80">字典值</th>
-                <th data-options="field:'sort',width:80">排序</th>
-                <th data-options="field:'dictId',width:80">字典ID</th>
+                <th data-options="field:'id',width:80,align:'center',halign:'center',sortable:'true'">ID</th>
+                <th data-options="field:'label',width:100,align:'center',halign:'center',sortable:'true'">字典标签</th>
+                <th data-options="field:'value',width:80,align:'center',halign:'center',sortable:'true'">字典值</th>
+                <th data-options="field:'sort',width:80,align:'center',halign:'center',sortable:'true'">排序</th>
+                <th data-options="field:'dictId',width:80,align:'center',halign:'center'">字典ID</th>
             </tr>
             </thead>
         </table>

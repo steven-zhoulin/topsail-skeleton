@@ -24,15 +24,16 @@
 <table id="dgJob" class="easyui-datagrid" title="岗位管理" fit="true"
        data-options="singleSelect:true,collapsible:false,method:'get'"
        url="api/system/job/listWithDeptName"
+       remoteSort="false"
        toolbar="#toolbarJob">
     <thead>
     <tr>
-        <th data-options="field:'id',width:80">ID</th>
-        <th data-options="field:'name',width:100">名称</th>
-        <th data-options="field:'enabled',formatter:dislayEnabled,width:100">状态</th>
-        <th data-options="field:'createTime',width:200">创建日期</th>
-        <th data-options="field:'sort',width:100">排序</th>
-        <th data-options="field:'deptName',width:100">所属部门</th>
+        <th data-options="field:'id',width:80,align:'center',halign:'center',sortable:'true'">ID</th>
+        <th data-options="field:'name',width:100,align:'center',halign:'center'">名称</th>
+        <th data-options="field:'enabled',formatter:dislayEnabled,width:100,align:'center',halign:'center',sortable:'true'">状态</th>
+        <th data-options="field:'createTime',width:200,align:'center',halign:'center',sortable:'true'">创建日期</th>
+        <th data-options="field:'sort',width:100,align:'center',halign:'center',sortable:'true'">排序</th>
+        <th data-options="field:'deptName',width:100,align:'center',halign:'center',sortable:'true'">所属部门</th>
     </tr>
     </thead>
 </table>
@@ -62,7 +63,8 @@
             <input name="name" class="easyui-textbox" required="true" label="名称:" style="width:100%"/>
         </div>
         <div style="margin-bottom:10px">
-            <input name="sort" class="easyui-textbox" required="true" label="排序:" style="width:100%"/>
+            <input name="sort" class="easyui-numberspinner" required="true" value="30" data-options="label:'排序:',labelPosition:'right',spinAlign:'right'" style="width:100%;">
+
         </div>
         <div style="margin-bottom:10px">
             <select id="deptId" name="deptId" class="easyui-combotree" label="部门:" style="width:100%;" data-options="url:'api/system/dept/tree',required:true"></select>
