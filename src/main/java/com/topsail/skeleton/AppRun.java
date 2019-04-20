@@ -40,4 +40,9 @@ public class AppRun {
         return "system/job";
     }
 
+    @GetMapping("/system-dept")
+    public String systemDept() {
+        return "system/dept";
+    }
+
 }

@@ -1,0 +1,48 @@
+package com.topsail.skeleton.config;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+/**
+ * @author Steven
+ */
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+
+        // 1.基于内存的用户存储 (主要用于开发和测试)
+        auth.inMemoryAuthentication().passwordEncoder(new BCryptPasswordEncoder())
+                .withUser("user")
+                .password(new BCryptPasswordEncoder().encode("123"))
+                .roles("USER");
+        auth.inMemoryAuthentication().passwordEncoder(new BCryptPasswordEncoder())
+                .withUser("admin")
+                .password(new BCryptPasswordEncoder().encode("123")).roles("USER", "ADMIN");
+
+        // 2.基于数据库的用户存储 (用于生产环境)
+//        auth.jdbcAuthentication().dataSource(dataSource)
+//                .usersByUsernameQuery(SQL_USERS_BY_USERNAME_QUERY)
+//                .authoritiesByUsernameQuery(SQL_AUTHORITIES_BY_USERNAME_QUERY)
+//                .groupAuthoritiesByUsername(SQL_GROUP_AUTHORITIES_BY_USERNAME_QUERY)
+//                .passwordEncoder(new BCryptPasswordEncoder());
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+
+        http.csrf().disable();
+        // http.authorizeRequests().anyRequest().permitAll();
+        http.authorizeRequests().anyRequest().authenticated().and().formLogin();
+        http.headers().frameOptions().disable();
+
+
+    }
+
+}
