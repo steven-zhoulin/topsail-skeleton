@@ -1,0 +1,48 @@
+server:
+  port: 8080
+  servlet.context-path: /
+
+  # 开启 HTTPS 支持，首先应创建 keystore: keytool -keystore mykeys.jks -genkey -alias tomcat -keyalg RSA
+#  ssl:
+#    key-store: classpath:mykeys.jks
+#    key-store-password: spring
+#    key-password: spring
+
+
+# 日志
+logging:
+  level:
+    root: DEBUG
+
+# 数据源配置
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/spring?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: 1q1w1e1r
+
+  # thymeleaf 模板配置
+  thymeleaf.prefix: classpath:/templates/
+  thymeleaf.suffix: .html
+  thymeleaf.mode: HTML
+  thymeleaf.encoding: UTF-8
+  thymeleaf.cache: false
+
+  resources.chain.strategy.content.enabled: true
+  resources.chain.strategy.content.paths: /**
+
+  jackson.date-format: yyyy-MM-dd HH:mm:ss
+  jackson.time-zone: Asia/Shanghai
+  jackson.default-property-inclusion: non_null
+
+  security.user.name: admin
+  security.user.password: 123
+
+# 启用 Actuator 监控权限
+management:
+  server.port: 9001
+  endpoints:
+    web.base-path: /actuator
+    web.exposure.include: refresh,health,info
+    health.show-details: always
