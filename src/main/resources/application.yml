@@ -12,12 +12,13 @@ server:
 # 日志
 logging:
   level:
-    root: DEBUG
+    root: INFO
+    com.topsail: DEBUG
 
-# 数据源配置
+
+# 数据源配置，无需显示指定 driver-class-name 会根据 url 识别出需要什么驱动。
 spring:
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/spring?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
     username: root
     password: 1q1w1e1r
