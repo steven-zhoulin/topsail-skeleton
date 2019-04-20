@@ -3,7 +3,7 @@ package com.topsail.skeleton.system.rest;
 import com.topsail.skeleton.common.IResult;
 import com.topsail.skeleton.system.domain.Dept;
 import com.topsail.skeleton.system.service.DeptService;
-import com.topsail.skeleton.system.service.dto.DeptTreeNode;
+import com.topsail.skeleton.system.service.dto.DeptDTO;
 import com.topsail.skeleton.system.util.TreeNode;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,11 +25,6 @@ public class DeptController {
     @GetMapping(value = "/tree")
     public List<TreeNode> getDeptTree() {
         List<TreeNode> tree = deptService.getDeptTree();
-        List<DeptTreeNode> xx = new ArrayList<>();
-        for (TreeNode node : tree) {
-            DeptTreeNode dtn = new DeptTreeNode();
-            BeanUtils.copyProperties(node, dtn);
-        }
         return tree;
     }
 

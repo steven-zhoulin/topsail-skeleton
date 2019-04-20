@@ -5,8 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Skeleton</title>
 
-    <link rel="stylesheet" href="../../static/easyui/themes/default/easyui.css"
-          th:href="@{/easyui/themes/default/easyui.css}"/>
+    <link rel="stylesheet" href="../../static/easyui/themes/default/easyui.css" th:href="@{/easyui/themes/default/easyui.css}"/>
     <link rel="stylesheet" href="../../static/easyui/themes/icon.css" th:href="@{/easyui/themes/icon.css}"/>
     <link rel="stylesheet" href="../../static/easyui/demo/demo.css" th:href="@{/easyui/demo/demo.css}"/>
 
@@ -14,15 +13,15 @@
     <script src="../../static/easyui/jquery.easyui.min.js" th:src="@{/easyui/jquery.easyui.min.js}"></script>
     <script src="../../static/easyui/locale/easyui-lang-zh_CN.js" th:src="@{/easyui/locale/easyui-lang-zh_CN.js}"></script>
 
-    <script src="../../static/js/system/dept.js" th:src="@{/js/system/dept.js}"></script>
+    <script src="../../static/js/system/menu.js" th:src="@{/js/system/menu.js}"></script>
 
 </head>
 
 <body>
 
-<table title="部门管理" fit="true" class="easyui-treegrid" style="width:700px;height:250px"
+<table title="菜单管理" fit="true" class="easyui-treegrid" style="width:700px;height:250px"
        data-options="
-				url: 'api/system/dept/tree',
+				url: 'api/system/menu/tree',
 				remoteSort: 'false',
 				toolbar: '#toolbarDept',
 				method: 'get',
@@ -32,29 +31,16 @@
 			">
     <thead>
     <tr>
-        <th data-options="field:'text',width:'220'">名称</th>
-        <th data-options="field:'enabled',formatter:dislayEnabled,width:'220',align:'center',halign:'center',sortable:'true'">状态</th>
-        <th data-options="field:'createTime',width:'220',align:'center',halign:'center',sortable:'true'">创建日期</th>
+        <th data-options="field:'text',width:'220',halign:'center'">名称</th>
+        <th data-options="field:'icon',width:'80',halign:'center'">图标</th>
+        <th data-options="field:'sort',width:'80',halign:'center'">排序</th>
+        <th data-options="field:'url',width:'220',halign:'center'">连接地址</th>
+        <th data-options="field:'component',width:'220',halign:'center'">组件路径</th>
+        <th data-options="field:'iFrame',width:'80',halign:'center'">内部菜单</th>
+        <th data-options="field:'createTime',width:'200',align:'center',halign:'center',sortable:'true'">创建日期</th>
     </tr>
     </thead>
 </table>
-
-<!--<table id="dgDept" class="easyui-datagrid" title="部门管理" fit="true"-->
-       <!--data-options="singleSelect:true,collapsible:false,method:'get'"-->
-       <!--url="api/system/dept/listWithDeptName"-->
-       <!--remoteSort="false"-->
-       <!--toolbar="#toolbarDept">-->
-    <!--<thead>-->
-    <!--<tr>-->
-        <!--<th data-options="field:'id',width:80,align:'center',halign:'center',sortable:'true'">ID</th>-->
-        <!--<th data-options="field:'name',width:100,align:'center',halign:'center'">名称</th>-->
-        <!--<th data-options="field:'enabled',formatter:dislayEnabled,width:100,align:'center',halign:'center',sortable:'true'">状态</th>-->
-        <!--<th data-options="field:'createTime',width:200,align:'center',halign:'center',sortable:'true'">创建日期</th>-->
-        <!--<th data-options="field:'sort',width:100,align:'center',halign:'center',sortable:'true'">排序</th>-->
-        <!--<th data-options="field:'deptName',width:100,align:'center',halign:'center',sortable:'true'">所属部门</th>-->
-    <!--</tr>-->
-    <!--</thead>-->
-<!--</table>-->
 
 <div id="toolbarDept" style="padding:5px;height:auto">
     <div style="margin-bottom:5px">

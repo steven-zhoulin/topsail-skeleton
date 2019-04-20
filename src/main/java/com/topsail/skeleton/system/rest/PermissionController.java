@@ -2,6 +2,7 @@ package com.topsail.skeleton.system.rest;
 
 import com.topsail.skeleton.system.domain.Permission;
 import com.topsail.skeleton.system.service.PermissionService;
+import com.topsail.skeleton.system.util.TreeNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,6 +38,12 @@ public class PermissionController {
     @PutMapping("/{id}")
     public int updateByPrimaryKey(Permission record) {
         return permissionService.updateByPrimaryKey(record);
+    }
+
+    @GetMapping(value = "/tree")
+    public List<TreeNode> getDeptTree() {
+        List<TreeNode> tree = permissionService.permissionTree();
+        return tree;
     }
 
 }

@@ -14,6 +14,7 @@ import org.apache.ibatis.type.JdbcType;
 
 @Mapper
 public interface MenuMapper {
+
     @Delete({
         "delete from menu",
         "where id = #{id,jdbcType=BIGINT}"
@@ -71,7 +72,7 @@ public interface MenuMapper {
     List<Menu> selectAll();
 
     @Update({
-        "updateByPrimaryKey menu",
+        "update menu",
         "set create_time = #{createTime,jdbcType=TIMESTAMP},",
           "i_frame = #{iFrame,jdbcType=BIT},",
           "name = #{name,jdbcType=VARCHAR},",

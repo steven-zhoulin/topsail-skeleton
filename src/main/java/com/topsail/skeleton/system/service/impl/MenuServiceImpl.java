@@ -3,8 +3,10 @@ package com.topsail.skeleton.system.service.impl;
 import com.topsail.skeleton.system.domain.Menu;
 import com.topsail.skeleton.system.mapper.MenuMapper;
 import com.topsail.skeleton.system.service.MenuService;
+import com.topsail.skeleton.system.service.dto.MenuDTO;
+import com.topsail.skeleton.system.util.TreeBuilder;
 import com.topsail.skeleton.system.util.TreeNode;
-import com.topsail.skeleton.system.util.TreeUtil;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,22 +47,22 @@ public class MenuServiceImpl implements MenuService {
     @Override
     public List<TreeNode> menuTree() {
         List<Menu> menuList = selectAll();
-        List<TreeNode> nodeList = transform(menuList);
-        List<TreeNode> tree = TreeUtil.getRootNode(nodeList);
+        List<MenuDTO> nodeList = transform(menuList);
+        List<TreeNode> tree = TreeBuilder.buildByRecursive(nodeList);
         return tree;
     }
 
-    private List<TreeNode> transform(List<Menu> deptList) {
-        List<TreeNode> nodeList = new ArrayList<>();
+    private List<MenuDTO> transform(List<Menu> menuList) {
+        List<MenuDTO> nodeList = new ArrayList<>();
 
-        for (Menu menu : deptList) {
-            TreeNode treeNode = new TreeNode();
-            treeNode.setId(String.valueOf(menu.getId()));
-            treeNode.setPid(String.valueOf(menu.getPid()));
-            treeNode.setText(menu.getName());
-            treeNode.setUrl(menu.getPath());
+        for (Menu menu : menuList) {
+            MenuDTO dto = new MenuDTO();
+            BeanUtils.copyProperties(menu, dto);
 
-            nodeList.add(treeNode);
+            dto.setText(menu.getName());
+            dto.setUrl(menu.getPath());
+
+            nodeList.add(dto);
         }
 
         return nodeList;

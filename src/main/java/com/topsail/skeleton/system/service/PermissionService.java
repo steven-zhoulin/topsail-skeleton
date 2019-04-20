@@ -1,6 +1,7 @@
 package com.topsail.skeleton.system.service;
 
 import com.topsail.skeleton.system.domain.Permission;
+import com.topsail.skeleton.system.util.TreeNode;
 
 import java.util.List;
 
@@ -18,4 +19,6 @@ public interface PermissionService {
     List<Permission> selectAll();
 
     int updateByPrimaryKey(Permission record);
+
+    List<TreeNode> permissionTree();
 }

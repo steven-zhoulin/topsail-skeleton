@@ -14,7 +14,7 @@ public class Permission implements Serializable {
 
     private String name;
 
-    private Integer pid;
+    private Long pid;
 
     private static final long serialVersionUID = 1L;
 }

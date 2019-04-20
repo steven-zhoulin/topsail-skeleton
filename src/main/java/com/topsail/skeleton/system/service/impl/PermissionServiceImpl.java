@@ -3,9 +3,14 @@ package com.topsail.skeleton.system.service.impl;
 import com.topsail.skeleton.system.domain.Permission;
 import com.topsail.skeleton.system.mapper.PermissionMapper;
 import com.topsail.skeleton.system.service.PermissionService;
+import com.topsail.skeleton.system.service.dto.PermissionDTO;
+import com.topsail.skeleton.system.util.TreeBuilder;
+import com.topsail.skeleton.system.util.TreeNode;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -37,5 +42,28 @@ public class PermissionServiceImpl implements PermissionService {
     @Override
     public int updateByPrimaryKey(Permission record) {
         return permissionMapper.updateByPrimaryKey(record);
+    }
+
+    @Override
+    public List<TreeNode> permissionTree() {
+        List<Permission> permissionList = selectAll();
+        List<PermissionDTO> nodeList = transform(permissionList);
+        List<TreeNode> tree = TreeBuilder.buildByRecursive(nodeList);
+        return tree;
+    }
+
+    private List<PermissionDTO> transform(List<Permission> permissionList) {
+        List<PermissionDTO> nodeList = new ArrayList<>();
+
+        for (Permission permission : permissionList) {
+            PermissionDTO dto = new PermissionDTO();
+            BeanUtils.copyProperties(permission, dto);
+
+            dto.setText(permission.getAlias());
+
+            nodeList.add(dto);
+        }
+
+        return nodeList;
     }
 }
