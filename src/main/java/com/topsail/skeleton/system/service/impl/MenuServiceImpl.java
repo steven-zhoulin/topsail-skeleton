@@ -48,7 +48,7 @@ public class MenuServiceImpl implements MenuService {
     public List<TreeNode> menuTree() {
         List<Menu> menuList = selectAll();
         List<MenuDTO> nodeList = transform(menuList);
-        List<TreeNode> tree = TreeBuilder.buildByRecursive(nodeList);
+        List<TreeNode> tree = TreeBuilder.buildByRecursive(nodeList, true);
         return tree;
     }
 

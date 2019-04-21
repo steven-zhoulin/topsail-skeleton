@@ -14,12 +14,15 @@ public class TreeBuilder {
      * @param nodes 所有树菜单集合
      * @return
      */
-    public final static List<TreeNode> buildByRecursive(List nodes) {
+    public final static List<TreeNode> buildByRecursive(List nodes, boolean isOpen) {
         List<TreeNode> tree = new ArrayList<>();
         for (Object o : nodes) {
             TreeNode node = (TreeNode) o;
             if (0L == node.getPid()) {
-                List<TreeNode> children = findChildren(node.getId(), nodes);
+                List<TreeNode> children = findChildren(node.getId(), nodes, isOpen);
+                if (!isOpen && 0 < children.size()) {
+                    node.setState("closed");
+                }
                 node.setChildren(children);
                 tree.add(node);
             }
@@ -35,7 +38,7 @@ public class TreeBuilder {
      * @param nodes 所有菜单树集合
      * @return
      */
-    private final static List<TreeNode> findChildren(Long pid, List nodes) {
+    private final static List<TreeNode> findChildren(Long pid, List nodes, boolean isOpen) {
 
         List<TreeNode> tree = new ArrayList<>();
 
@@ -46,7 +49,10 @@ public class TreeBuilder {
             }
 
             if (node.getPid().equals(pid)) {
-                List<TreeNode> children = findChildren(node.getId(), nodes);
+                List<TreeNode> children = findChildren(node.getId(), nodes, isOpen);
+                if (!isOpen && 0 < children.size()) {
+                    node.setState("closed");
+                }
                 node.setChildren(children);
                 tree.add(node);
             }

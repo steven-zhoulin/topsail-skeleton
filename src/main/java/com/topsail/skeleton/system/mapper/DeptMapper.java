@@ -1,16 +1,10 @@
 package com.topsail.skeleton.system.mapper;
 
 import com.topsail.skeleton.system.domain.Dept;
-import java.util.List;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.SelectKey;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.type.JdbcType;
+
+import java.util.List;
 
 @Mapper
 public interface DeptMapper {
@@ -24,7 +18,7 @@ public interface DeptMapper {
         "insert into dept (name, pid, ",
         "create_time, enabled)",
         "values (#{name,jdbcType=VARCHAR}, #{pid,jdbcType=BIGINT}, ",
-        "#{createTime,jdbcType=TIMESTAMP}, #{enabled,jdbcType=BIT})"
+        "now(), #{enabled,jdbcType=BIT})"
     })
     @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="id", before=false, resultType=Long.class)
     int insert(Dept record);
@@ -58,11 +52,20 @@ public interface DeptMapper {
     })
     List<Dept> selectAll();
 
+    @SelectProvider(type = DeptSQLProvider.class, method="getSelectLikeName")
+    @Results({
+            @Result(column = "id", property = "id", jdbcType = JdbcType.BIGINT, id = true),
+            @Result(column = "name", property = "name", jdbcType = JdbcType.VARCHAR),
+            @Result(column = "pid", property = "pid", jdbcType = JdbcType.BIGINT),
+            @Result(column = "create_time", property = "createTime", jdbcType = JdbcType.TIMESTAMP),
+            @Result(column = "enabled", property = "enabled", jdbcType = JdbcType.BIT)
+    })
+    List<Dept> selectLikeName(@Param("content")String content, @Param("enabled") boolean enabled);
+
     @Update({
-        "updateByPrimaryKey dept",
+        "update dept",
         "set name = #{name,jdbcType=VARCHAR},",
           "pid = #{pid,jdbcType=BIGINT},",
-          "create_time = #{createTime,jdbcType=TIMESTAMP},",
           "enabled = #{enabled,jdbcType=BIT}",
         "where id = #{id,jdbcType=BIGINT}"
     })

@@ -14,7 +14,7 @@ public class Dept implements Serializable {
 
     private Date createTime;
 
-    private Boolean enabled;
+    private Boolean enabled = false;
 
     private static final long serialVersionUID = 1L;
 }

@@ -2,12 +2,16 @@ $(function () {
     $('#dgDept').datagrid({
         onClick: function (node) {
             openTab(node.text, node.url);
+        },
+        onDblClickCell: function (node) {
+            editDept();
         }
     });
 });
 
 
 function addDept() {
+    $('#pid').combotree('reload');
     $('#dlgDept').dialog('open').dialog('center').dialog('setTitle', '新增');
     $('#fmDept').form('clear');
     $("#enabledId").switchbutton({checked: true});
@@ -15,10 +19,12 @@ function addDept() {
 }
 
 function editDept() {
-    var row = $('#dgDept').datagrid('getSelected');
+    $('#pid').combotree('reload');
+    var row = $('#dgDept').treegrid('getSelected');
 
     if (row) {
         $('#dlgDept').dialog('open').dialog('center').dialog('setTitle', '修改');
+        row.name = row.text;
         $('#fmDept').form('load', row);
         if (row.enabled) {
             $("#enabledId").switchbutton({checked: true});
@@ -28,22 +34,22 @@ function editDept() {
 }
 
 function deleteDept() {
-    var row = $('#dgDept').datagrid('getSelected');
+    var row = $('#dgDept').treegrid('getSelected');
     if (row) {
         $.messager.confirm('信息', '确认删除?', function (r) {
             if (r) {
                 $.post('api/system/dept/' + row.id + '?_method=delete',
 
                     function (result) {
-                    if (result.code) {
-                        $.messager.show({
-                            title: '异常',
-                            msg: result.message
-                        });
-                    } else {
-                        $('#dgDept').datagrid('reload');
-                    }
-                }, 'json');
+                        if (result.code) {
+                            $.messager.show({
+                                title: '异常',
+                                msg: result.message
+                            });
+                        } else {
+                            $('#dgDept').treegrid('reload');
+                        }
+                    }, 'json');
             }
         });
     }
@@ -53,27 +59,28 @@ function saveDept() {
     $('#fmDept').form('submit', {
         url: url,
         onSubmit: function (param) {
-
             return $(this).form('validate');
         },
         success: function (result) {
             var result = eval('(' + result + ')');
-            if (result.error) {
+
+            if (result.code) {
                 $.messager.show({
-                    title: 'Error',
-                    msg: result.error
+                    title: '异常',
+                    msg: result.message
                 });
             } else {
                 $('#dlgDept').dialog('close');
-                $('#dgDept').datagrid('reload');
+                $('#dgDept').treegrid('reload');
             }
+
         }
     });
 }
 
 function searchDept() {
-    var searchContent = $('#searchContent').textbox('getValue');;
-    var searchType = $('#searchType').textbox('getValue');;
+    var searchContent = $('#searchContent').textbox('getValue');
+    var searchType = $('#searchType').textbox('getValue');
     var suffix = 'selectLikeName';
     if (searchContent) {
         searchContent = $.trim(searchContent);
@@ -85,7 +92,7 @@ function searchDept() {
         suffix += "?enabled=" + searchType;
     }
 
-    $('#dgDept').datagrid({
+    $('#dgDept').treegrid({
         url: 'api/system/dept/' + suffix
     });
 }

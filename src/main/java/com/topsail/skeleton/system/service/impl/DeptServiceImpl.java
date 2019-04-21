@@ -34,7 +34,7 @@ public class DeptServiceImpl implements DeptService {
     }
 
     @Override
-    public IResult insert(com.topsail.skeleton.system.domain.Dept record) {
+    public IResult insert(Dept record) {
         int ret = deptMapper.insert(record);
         ValidationUtil.isAlreadyExist(ret, ENTITY_NAME, "id", record.getId());
         return Result.success();
@@ -49,7 +49,7 @@ public class DeptServiceImpl implements DeptService {
 
     @Override
     public IResult selectAll() {
-        List<com.topsail.skeleton.system.domain.Dept> depts = deptMapper.selectAll();
+        List<Dept> depts = deptMapper.selectAll();
         ValidationUtil.isNotFound(depts, ENTITY_NAME, "", null);
         return Result.success(depts);
     }
@@ -62,11 +62,20 @@ public class DeptServiceImpl implements DeptService {
     }
 
     @Override
-    public List<TreeNode> getDeptTree() {
+    public IResult selectLikeName(String content, boolean enabled) {
+
+        List<DeptDTO> jobDTOList = new ArrayList<>();
+        List<Dept> deptList = deptMapper.selectLikeName(content, enabled);
+        List<DeptDTO> nodeList = transform(deptList);
+        return Result.success(nodeList);
+    }
+
+    @Override
+    public List<TreeNode> getDeptTree(boolean isOpen) {
 
         List<Dept> deptList = deptMapper.selectAll();
         List<DeptDTO> nodeList = transform(deptList);
-        List<TreeNode> tree = TreeBuilder.buildByRecursive(nodeList);
+        List<TreeNode> tree = TreeBuilder.buildByRecursive(nodeList, isOpen);
         return tree;
 
     }

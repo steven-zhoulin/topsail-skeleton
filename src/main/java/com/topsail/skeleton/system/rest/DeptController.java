@@ -7,6 +7,7 @@ import com.topsail.skeleton.system.service.dto.DeptDTO;
 import com.topsail.skeleton.system.util.TreeNode;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -22,9 +23,9 @@ public class DeptController {
     @Autowired
     private DeptService deptService;
 
-    @GetMapping(value = "/tree")
-    public List<TreeNode> getDeptTree() {
-        List<TreeNode> tree = deptService.getDeptTree();
+    @RequestMapping(value = "/tree")
+    public List<TreeNode> getDeptTree(@RequestParam(value = "isOpen", defaultValue = "true") boolean isOpen) {
+        List<TreeNode> tree = deptService.getDeptTree(isOpen);
         return tree;
     }
 
@@ -36,6 +37,13 @@ public class DeptController {
     @GetMapping("/{id}")
     public IResult selectByPrimaryKey(@PathVariable Long id) {
         return deptService.selectByPrimaryKey(id);
+    }
+
+    @GetMapping("/selectLikeName")
+    @ResponseStatus(HttpStatus.OK)
+    public IResult selectLikeName(@RequestParam(value = "content", required = false) String content,
+                                  @RequestParam("enabled") boolean enabled) {
+        return deptService.selectLikeName(content, enabled);
     }
 
     @PostMapping("")

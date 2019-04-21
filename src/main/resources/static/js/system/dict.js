@@ -8,8 +8,18 @@ $(function () {
         },
         onClick: function (node) {
             openTab(node.text, node.url);
+        },
+        onDblClickCell: function(node) {
+            editDict();
         }
     });
+
+    $('#dgDictDetail').datagrid({
+        onDblClickCell: function(node) {
+            editDictDetail();
+        }
+    });
+
 });
 
 

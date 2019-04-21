@@ -18,9 +18,11 @@ public interface DeptService {
 
     IResult selectAll();
 
+    IResult selectLikeName(String content, boolean enabled);
+
     IResult updateByPrimaryKey(com.topsail.skeleton.system.domain.Dept record);
 
-    List<TreeNode> getDeptTree();
+    List<TreeNode> getDeptTree(boolean isOpen);
 
     //Object buildTree(List<Dept> deptDTOS);
 }

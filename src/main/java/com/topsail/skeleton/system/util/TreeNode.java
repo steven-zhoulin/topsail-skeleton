@@ -22,6 +22,12 @@ public class TreeNode {
      */
     private String text;
 
+
+    /**
+     * 节点开启状态
+     */
+    private String state = "open";
+
     /**
      * 子节点
      */

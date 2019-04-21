@@ -48,7 +48,7 @@ public class PermissionServiceImpl implements PermissionService {
     public List<TreeNode> permissionTree() {
         List<Permission> permissionList = selectAll();
         List<PermissionDTO> nodeList = transform(permissionList);
-        List<TreeNode> tree = TreeBuilder.buildByRecursive(nodeList);
+        List<TreeNode> tree = TreeBuilder.buildByRecursive(nodeList, true);
         return tree;
     }
 

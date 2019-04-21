@@ -2,6 +2,9 @@ $(function () {
     $('#dgJob').datagrid({
         onClick: function (node) {
             openTab(node.text, node.url);
+        },
+        onDblClickCell: function(node) {
+            editJob();
         }
     });
 });
