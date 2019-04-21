@@ -41,8 +41,8 @@ public class DeptController {
 
     @GetMapping("/selectLikeName")
     @ResponseStatus(HttpStatus.OK)
-    public IResult selectLikeName(@RequestParam(value = "content", required = false) String content,
-                                  @RequestParam("enabled") boolean enabled) {
+    public List<TreeNode> selectLikeName(@RequestParam(value = "content", required = false) String content,
+                                  @RequestParam(value = "enabled", required = false) Boolean enabled) {
         return deptService.selectLikeName(content, enabled);
     }
 

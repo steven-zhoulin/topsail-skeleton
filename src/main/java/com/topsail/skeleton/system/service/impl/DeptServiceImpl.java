@@ -9,11 +9,13 @@ import com.topsail.skeleton.system.service.dto.DeptDTO;
 import com.topsail.skeleton.system.util.TreeBuilder;
 import com.topsail.skeleton.system.util.TreeNode;
 import com.topsail.skeleton.util.ValidationUtil;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Steven
@@ -62,22 +64,19 @@ public class DeptServiceImpl implements DeptService {
     }
 
     @Override
-    public IResult selectLikeName(String content, boolean enabled) {
-
-        List<DeptDTO> jobDTOList = new ArrayList<>();
+    public List<TreeNode> selectLikeName(String content, Boolean enabled) {
         List<Dept> deptList = deptMapper.selectLikeName(content, enabled);
         List<DeptDTO> nodeList = transform(deptList);
-        return Result.success(nodeList);
+        List<TreeNode> tree = TreeBuilder.buildByRecursive(nodeList, true);
+        return tree;
     }
 
     @Override
     public List<TreeNode> getDeptTree(boolean isOpen) {
-
         List<Dept> deptList = deptMapper.selectAll();
         List<DeptDTO> nodeList = transform(deptList);
         List<TreeNode> tree = TreeBuilder.buildByRecursive(nodeList, isOpen);
         return tree;
-
     }
 
     private List<DeptDTO> transform(List<Dept> deptList) {

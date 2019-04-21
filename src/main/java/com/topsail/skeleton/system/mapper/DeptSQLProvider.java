@@ -9,11 +9,14 @@ import org.apache.ibatis.jdbc.SQL;
  */
 public class DeptSQLProvider {
 
-    public String getSelectLikeName(@Param("content") String content, @Param("enabled") boolean enabled) {
+    public String getSelectLikeName(@Param("content") String content, @Param("enabled") Boolean enabled) {
         SQL sql = new SQL();
         sql.SELECT("id", "name", "pid", "create_time", "enabled");
         sql.FROM("dept");
-        sql.WHERE("enabled = #{enabled}");
+        if (null != enabled) {
+            sql.AND().WHERE("enabled = #{enabled}");
+        }
+
         if (StringUtils.isNotBlank(content)) {
             sql.AND().WHERE("name LIKE CONCAT('%',#{content},'%')");
         }

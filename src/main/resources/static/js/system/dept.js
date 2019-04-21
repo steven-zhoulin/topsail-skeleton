@@ -1,5 +1,5 @@
 $(function () {
-    $('#dgDept').datagrid({
+    $('#dgDept').treegrid({
         onClick: function (node) {
             openTab(node.text, node.url);
         },
@@ -81,19 +81,21 @@ function saveDept() {
 function searchDept() {
     var searchContent = $('#searchContent').textbox('getValue');
     var searchType = $('#searchType').textbox('getValue');
-    var suffix = 'selectLikeName';
     if (searchContent) {
         searchContent = $.trim(searchContent);
     }
 
-    if (searchContent != "") {
-        suffix += '?content=' + searchContent + "&enabled=" + searchType;
-    } else {
-        suffix += "?enabled=" + searchType;
+    if (searchType) {
+        searchType = $.trim(searchType);
     }
 
     $('#dgDept').treegrid({
-        url: 'api/system/dept/' + suffix
+        url: 'api/system/dept/selectLikeName',
+        queryParams: {
+            content: searchContent,
+            enabled: searchType
+        }
+
     });
 }
 

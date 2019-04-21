@@ -60,7 +60,7 @@ public interface DeptMapper {
             @Result(column = "create_time", property = "createTime", jdbcType = JdbcType.TIMESTAMP),
             @Result(column = "enabled", property = "enabled", jdbcType = JdbcType.BIT)
     })
-    List<Dept> selectLikeName(@Param("content")String content, @Param("enabled") boolean enabled);
+    List<Dept> selectLikeName(@Param("content")String content, @Param("enabled") Boolean enabled);
 
     @Update({
         "update dept",
