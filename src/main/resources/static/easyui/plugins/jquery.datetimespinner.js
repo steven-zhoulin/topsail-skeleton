@@ -1,5 +1,5 @@
 /**
- * EasyUI for jQuery 1.7.0
+ * EasyUI for jQuery 1.5.5.7
  * 
  * Copyright (c) 2009-2018 www.jeasyui.com. All rights reserved.
  *
@@ -54,8 +54,8 @@ var _b=$.fn.datebox.defaults.parser.call(this,dt[0]);
 if(dt.length<2){
 return _b;
 }
-var _c=$.fn.timespinner.defaults.parser.call(this,dt[1]+(dt[2]?" "+dt[2]:""));
+var _c=$.fn.timespinner.defaults.parser.call(this,dt[1]);
 return new Date(_b.getFullYear(),_b.getMonth(),_b.getDate(),_c.getHours(),_c.getMinutes(),_c.getSeconds());
-},selections:[[0,2],[3,5],[6,10],[11,13],[14,16],[17,19],[20,22]]});
+},selections:[[0,2],[3,5],[6,10],[11,13],[14,16],[17,19]]});
 })(jQuery);
 

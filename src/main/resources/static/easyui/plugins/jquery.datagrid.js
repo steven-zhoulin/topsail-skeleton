@@ -1,5 +1,5 @@
 /**
- * EasyUI for jQuery 1.7.0
+ * EasyUI for jQuery 1.5.5.7
  * 
  * Copyright (c) 2009-2018 www.jeasyui.com. All rights reserved.
  *
@@ -107,9 +107,6 @@ var _22=$.data(_21,"datagrid");
 var _23=_22.options;
 var dc=_22.dc;
 var _24=_22.panel;
-if(!_24.is(":visible")){
-return;
-}
 var _25=_24.width();
 var _26=_24.height();
 var _27=dc.view;
@@ -150,7 +147,7 @@ var _38=$.data(_35,"datagrid").data.rows;
 var _39=$.data(_35,"datagrid").options;
 var dc=$.data(_35,"datagrid").dc;
 var tmp=$("<tr class=\"datagrid-row\" style=\"position:absolute;left:-999999px\"></tr>").appendTo("body");
-var _3a=tmp.outerHeight();
+var _3a=tmp._outerHeight()-1;
 tmp.remove();
 if(!dc.body1.is(":empty")&&(!_39.nowrap||_39.autoRowHeight||_37)){
 if(_36!=undefined){
@@ -187,14 +184,11 @@ function _3b(_41,_42){
 for(var i=0;i<_42.length;i++){
 var tr1=$(_41[i]);
 var tr2=$(_42[i]);
-tr1.css("height","");
-tr2.css("height","");
-var _43=Math.max(tr1.outerHeight(),tr2.outerHeight());
-if(_43!=_3a){
-_43=Math.max(_43,_3a)+1;
+tr1.css("height","auto");
+tr2.css("height","auto");
+var _43=Math.max(tr1.height(),tr2.height(),_3a)+1;
 tr1.css("height",_43);
 tr2.css("height",_43);
-}
 }
 };
 function _3f(cc){
@@ -813,45 +807,40 @@ var _cf=$.data(_ce,"datagrid");
 var _d0=_cf.options;
 var dc=_cf.dc;
 var _d1=dc.view2.children("div.datagrid-header");
-var _d2=_d1.children("div.datagrid-header-inner");
 dc.body2.css("overflow-x","");
+_d2();
 _d3();
 _d4();
-_d5();
-_d3(true);
-_d2.show();
+_d2(true);
 if(_d1.width()>=_d1.find("table").width()){
 dc.body2.css("overflow-x","hidden");
 }
-if(!_d0.showHeader){
-_d2.hide();
-}
-function _d5(){
+function _d4(){
 if(!_d0.fitColumns){
 return;
 }
 if(!_cf.leftWidth){
 _cf.leftWidth=0;
 }
-var _d6=0;
+var _d5=0;
 var cc=[];
-var _d7=_74(_ce,false);
-for(var i=0;i<_d7.length;i++){
-var col=_75(_ce,_d7[i]);
-if(_d8(col)){
-_d6+=col.width;
+var _d6=_74(_ce,false);
+for(var i=0;i<_d6.length;i++){
+var col=_75(_ce,_d6[i]);
+if(_d7(col)){
+_d5+=col.width;
 cc.push({field:col.field,col:col,addingWidth:0});
 }
 }
-if(!_d6){
+if(!_d5){
 return;
 }
 cc[cc.length-1].addingWidth-=_cf.leftWidth;
-_d2.show();
+var _d8=_d1.children("div.datagrid-header-inner").show();
 var _d9=_d1.width()-_d1.find("table").width()-_d0.scrollbarSize+_cf.leftWidth;
-var _da=_d9/_d6;
+var _da=_d9/_d5;
 if(!_d0.showHeader){
-_d2.hide();
+_d8.hide();
 }
 for(var i=0;i<cc.length;i++){
 var c=cc[i];
@@ -870,7 +859,7 @@ c.col.width+=c.addingWidth;
 _cf.leftWidth=_d9;
 $(_ce).datagrid("fixColumnSize");
 };
-function _d4(){
+function _d3(){
 var _dc=false;
 var _dd=_74(_ce,true).concat(_74(_ce,false));
 $.map(_dd,function(_de){
@@ -887,7 +876,7 @@ if(_dc){
 $(_ce).datagrid("fixColumnSize");
 }
 };
-function _d3(fit){
+function _d2(fit){
 var _e0=dc.header1.add(dc.header2).find(".datagrid-cell-group");
 if(_e0.length){
 _e0.each(function(){
@@ -898,7 +887,7 @@ _20(_ce);
 }
 }
 };
-function _d8(col){
+function _d7(col){
 if(String(col.width||"").indexOf("%")>=0){
 return false;
 }
@@ -1734,7 +1723,7 @@ var _1ac=$.extend({},opts.queryParams);
 if(opts.pagination){
 $.extend(_1ac,{page:opts.pageNumber||1,rows:opts.pageSize});
 }
-if(opts.sortName&&opts.remoteSort){
+if(opts.sortName){
 $.extend(_1ac,{sort:opts.sortName,order:opts.sortOrder});
 }
 if(opts.onBeforeLoad.call(_1aa,_1ac)==false){

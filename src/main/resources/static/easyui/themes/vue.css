@@ -320,7 +320,7 @@
 .tabs li{
 	display: inherit;
 }
-.tabs li .tabs-inner{
+.tabs li a.tabs-inner{
 	height: auto;
 	line-height: normal;
 	display: inherit;
@@ -344,8 +344,8 @@
 	right: -1px;
 }
 .tabs-header-left .tabs li,.tabs-header-right .tabs li,
-.tabs-header-left .tabs li .tabs-inner,
-.tabs-header-right .tabs li .tabs-inner{
+.tabs-header-left .tabs li a.tabs-inner,
+.tabs-header-right .tabs li a.tabs-inner{
 	display: inherit;
 }
 
@@ -354,7 +354,7 @@
 	height: 200px;
 	z-index: 9999;
 }
-.combo-panel .tree,
+.combo-panel eui-virtual-scroll,
 .combo-panel eui-datagrid,
 .combo-panel eui-treegrid{
 	width: 100%;
@@ -380,15 +380,12 @@
 	height: 20px;
 	line-height: 20px;
 }
-.tree-editing.tree-title{
-	position: relative;
-	margin: 0;
-	padding: 0;
-	height: 26px;
-	line-height: 26px;
+
+.datagrid,eui-datagrid,
+eui-datagrid-view,eui-datagrid-body,
+eui-treegrid-view,eui-treegrid-body{
 	overflow: hidden;
 }
-.datagrid,
 .datagrid-view,.datagrid-view1,.datagrid-view2{
 	position: relative;
 }
@@ -585,6 +582,15 @@
 	position: relative;
 }
 
+eui-tagbox{
+	width: 12em;
+	height: auto;
+	min-height: 30px;
+}
+eui-switchbutton{
+	width: 70px;
+	height: 30px;
+}
 .radiobutton{
 	width: 20px;
 	height: 20px;
@@ -599,6 +605,9 @@
 .pagination1{
 	height: 34px;
 	padding: 2px;
+}
+eui-layout{
+	display: block;
 }
 .layout{
 	height: 100%;

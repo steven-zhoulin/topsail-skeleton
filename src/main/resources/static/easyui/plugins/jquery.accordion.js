@@ -1,5 +1,5 @@
 /**
- * EasyUI for jQuery 1.7.0
+ * EasyUI for jQuery 1.5.5.7
  * 
  * Copyright (c) 2009-2018 www.jeasyui.com. All rights reserved.
  *
@@ -25,7 +25,7 @@ var _9="auto";
 var _a=cc.find(">.panel>.accordion-header");
 if(_a.length){
 if(_7){
-$(_a[0]).next().panel("resize",{width:cc.width(),height:cc.height()});
+$(_6[0]).panel("resize",{width:cc.width(),height:cc.height()});
 _8=$(_a[0])._outerWidth();
 }else{
 _8=$(_a[0]).css("height","")._outerHeight();

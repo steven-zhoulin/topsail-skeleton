@@ -1,10 +1,3 @@
-* {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -o-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  box-sizing: border-box;
-}
 .panel {
   overflow: hidden;
   text-align: left;
@@ -1289,11 +1282,9 @@
   position: relative;
   border: 0;
 }
-.tabs li .tabs-inner {
+.tabs li a.tabs-inner {
   display: inline-block;
   text-decoration: none;
-  cursor: hand;
-  cursor: pointer;
   margin: 0;
   padding: 0 10px;
   height: 25px;
@@ -1306,11 +1297,11 @@
   -webkit-border-radius: 4px 4px 0 0;
   border-radius: 4px 4px 0 0;
 }
-.tabs li.tabs-selected .tabs-inner {
+.tabs li.tabs-selected a.tabs-inner {
   font-weight: bold;
   outline: none;
 }
-.tabs li.tabs-selected .tabs-inner:hover {
+.tabs li.tabs-selected a:hover.tabs-inner {
   cursor: default;
   pointer: default;
 }
@@ -1385,7 +1376,7 @@
 .tabs-header-bottom .tabs li {
   margin: -1px 4px 0 0;
 }
-.tabs-header-bottom .tabs li .tabs-inner {
+.tabs-header-bottom .tabs li a.tabs-inner {
   -moz-border-radius: 0 0 4px 4px;
   -webkit-border-radius: 0 0 4px 4px;
   border-radius: 0 0 4px 4px;
@@ -1443,11 +1434,11 @@
   margin: 0 0 4px -1px;
   float: left;
 }
-.tabs-justified li .tabs-inner {
+.tabs-justified li a.tabs-inner {
   padding-left: 0;
   padding-right: 0;
 }
-.tabs-header-left .tabs li .tabs-inner {
+.tabs-header-left .tabs li a.tabs-inner {
   display: block;
   text-align: left;
   padding-left: 10px;
@@ -1456,7 +1447,7 @@
   -webkit-border-radius: 4px 0 0 4px;
   border-radius: 4px 0 0 4px;
 }
-.tabs-header-right .tabs li .tabs-inner {
+.tabs-header-right .tabs li a.tabs-inner {
   display: block;
   text-align: left;
   padding-left: 10px;
@@ -1494,7 +1485,7 @@
 .tabs-header-right .tabs-pill {
   padding-left: 3px;
 }
-.tabs-header .tabs-pill li .tabs-inner {
+.tabs-header .tabs-pill li a.tabs-inner {
   -moz-border-radius: 4px 4px 4px 4px;
   -webkit-border-radius: 4px 4px 4px 4px;
   border-radius: 4px 4px 4px 4px;
@@ -1537,16 +1528,16 @@
 .tabs li a.tabs-close {
   background: url('images/tabs_icons.png') no-repeat -34px center;
 }
-.tabs li .tabs-inner:hover {
+.tabs li a.tabs-inner:hover {
   background: #eee;
   color: #404040;
   filter: none;
 }
-.tabs li.tabs-selected .tabs-inner {
+.tabs li.tabs-selected a.tabs-inner {
   background-color: #ffffff;
   color: #000000;
 }
-.tabs li .tabs-inner {
+.tabs li a.tabs-inner {
   color: #000000;
   background-color: #f5f5f5;
 }
@@ -1563,11 +1554,11 @@
 .tabs-tool,
 .tabs,
 .tabs-panels,
-.tabs li .tabs-inner,
-.tabs li.tabs-selected .tabs-inner,
-.tabs-header-bottom .tabs li.tabs-selected .tabs-inner,
-.tabs-header-left .tabs li.tabs-selected .tabs-inner,
-.tabs-header-right .tabs li.tabs-selected .tabs-inner {
+.tabs li a.tabs-inner,
+.tabs li.tabs-selected a.tabs-inner,
+.tabs-header-bottom .tabs li.tabs-selected a.tabs-inner,
+.tabs-header-left .tabs li.tabs-selected a.tabs-inner,
+.tabs-header-right .tabs li.tabs-selected a.tabs-inner {
   border-color: #ddd;
 }
 .tabs-p-tool a:hover,
@@ -1575,19 +1566,19 @@
 .tabs-scroller-over {
   background-color: #eee;
 }
-.tabs li.tabs-selected .tabs-inner {
+.tabs li.tabs-selected a.tabs-inner {
   border-bottom: 1px solid #ffffff;
 }
-.tabs-header-bottom .tabs li.tabs-selected .tabs-inner {
+.tabs-header-bottom .tabs li.tabs-selected a.tabs-inner {
   border-top: 1px solid #ffffff;
 }
-.tabs-header-left .tabs li.tabs-selected .tabs-inner {
+.tabs-header-left .tabs li.tabs-selected a.tabs-inner {
   border-right: 1px solid #ffffff;
 }
-.tabs-header-right .tabs li.tabs-selected .tabs-inner {
+.tabs-header-right .tabs li.tabs-selected a.tabs-inner {
   border-left: 1px solid #ffffff;
 }
-.tabs-header .tabs-pill li.tabs-selected .tabs-inner {
+.tabs-header .tabs-pill li.tabs-selected a.tabs-inner {
   background: #00bbee;
   color: #fff;
   filter: none;
@@ -1877,20 +1868,6 @@
 }
 .datagrid-header .datagrid-filter-row td.datagrid-header-over {
   background: inherit;
-}
-.datagrid-split-proxy {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 1px;
-  height: 100%;
-  border-left: 1px solid #00bbee;
-}
-.datagrid-moving-proxy {
-  border: 1px solid #00bbee;
-  height: 32px;
-  line-height: 32px;
-  padding: 0 4px;
 }
 .propertygrid .datagrid-view1 .datagrid-body td {
   padding-bottom: 1px;
@@ -3385,9 +3362,6 @@
   padding: 0;
   margin: 0 -12px;
   border: 0;
-}
-.sidemenu-tooltip.tooltip-left {
-  margin: 0 12px;
 }
 .sidemenu-tooltip .tooltip-arrow-outer,
 .sidemenu-tooltip .tooltip-arrow {

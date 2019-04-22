@@ -1,5 +1,5 @@
 /**
- * EasyUI for jQuery 1.7.0
+ * EasyUI for jQuery 1.5.5.7
  * 
  * Copyright (c) 2009-2018 www.jeasyui.com. All rights reserved.
  *
@@ -12,9 +12,6 @@ function _1(_2){
 var _3=$.data(_2,"pagination");
 var _4=_3.options;
 var bb=_3.bb={};
-if(_4.buttons&&!$.isArray(_4.buttons)){
-$(_4.buttons).insertAfter(_2);
-}
 var _5=$(_2).addClass("pagination").html("<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\"><tr></tr></table>");
 var tr=_5.find("tr");
 var aa=$.extend([],_4.layout);

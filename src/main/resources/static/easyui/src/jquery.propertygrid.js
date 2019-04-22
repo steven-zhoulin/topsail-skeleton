@@ -1,5 +1,5 @@
 /**
- * EasyUI for jQuery 1.7.0
+ * EasyUI for jQuery 1.5.5.7
  * 
  * Copyright (c) 2009-2018 www.jeasyui.com. All rights reserved.
  *
@@ -372,8 +372,7 @@
 			var dc = state.dc;
 			var ht = dc.header2.find('table');
 			var fr = ht.find('tr.datagrid-filter-row').hide();
-			// var ww = ht.width();
-			var ww = dc.body2.children('table.datagrid-btable:first').width();
+			var ww = ht.width();
 			if (groupIndex == undefined){
 				var groupHeader = dc.body2.children('div.datagrid-group');
 			} else {
