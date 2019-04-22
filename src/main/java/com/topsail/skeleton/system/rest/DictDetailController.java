@@ -1,14 +1,11 @@
 package com.topsail.skeleton.system.rest;
 
 import com.topsail.skeleton.common.IResult;
-import com.topsail.skeleton.common.Result;
-import com.topsail.skeleton.system.domain.DictDetail;
+import com.topsail.skeleton.system.domain.po.DictDetail;
 import com.topsail.skeleton.system.service.DictDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 /**
  * @author Steven

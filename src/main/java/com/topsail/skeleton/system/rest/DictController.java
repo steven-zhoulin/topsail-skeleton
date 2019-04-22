@@ -3,7 +3,7 @@ package com.topsail.skeleton.system.rest;
 import com.topsail.skeleton.common.IResult;
 import com.topsail.skeleton.common.Result;
 import com.topsail.skeleton.exception.AlreadyExistException;
-import com.topsail.skeleton.system.domain.Dict;
+import com.topsail.skeleton.system.domain.po.Dict;
 import com.topsail.skeleton.system.service.DictService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

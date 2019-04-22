@@ -1,6 +1,6 @@
 package com.topsail.skeleton.system.service.impl;
 
-import com.topsail.skeleton.system.domain.Role;
+import com.topsail.skeleton.system.domain.po.Role;
 import com.topsail.skeleton.system.mapper.RoleMapper;
 import com.topsail.skeleton.system.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;

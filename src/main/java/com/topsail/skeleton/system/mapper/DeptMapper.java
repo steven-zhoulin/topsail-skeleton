@@ -1,6 +1,7 @@
 package com.topsail.skeleton.system.mapper;
 
-import com.topsail.skeleton.system.domain.Dept;
+import com.topsail.skeleton.system.domain.po.Dept;
+import com.topsail.skeleton.system.mapper.provider.DeptSQLProvider;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.type.JdbcType;
 

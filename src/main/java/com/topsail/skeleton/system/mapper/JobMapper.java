@@ -1,7 +1,8 @@
 package com.topsail.skeleton.system.mapper;
 
-import com.topsail.skeleton.system.domain.Dept;
-import com.topsail.skeleton.system.domain.Job;
+import com.topsail.skeleton.system.domain.po.Dept;
+import com.topsail.skeleton.system.domain.po.Job;
+import com.topsail.skeleton.system.mapper.provider.JobSQLProvider;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.type.JdbcType;
 
@@ -67,7 +68,7 @@ public interface JobMapper {
             @Result(column = "sort", property = "sort", jdbcType = JdbcType.BIGINT),
             @Result(column = "dept_id", property = "deptId", jdbcType = JdbcType.BIGINT)
     })
-    List<Job> selectLikeName(@Param("content")String content, @Param("enabled") boolean enabled);
+    List<Job> selectLikeName(@Param("content")String content, @Param("enabled") Boolean enabled);
 
     @Update({
             "update job",

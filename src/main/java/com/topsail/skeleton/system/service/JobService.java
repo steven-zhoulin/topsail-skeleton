@@ -1,7 +1,7 @@
 package com.topsail.skeleton.system.service;
 
 import com.topsail.skeleton.common.IResult;
-import com.topsail.skeleton.system.domain.Job;
+import com.topsail.skeleton.system.domain.po.Job;
 
 /**
  * @author Steven
@@ -18,7 +18,7 @@ public interface JobService {
 
     IResult selectAllWithDeptName();
 
-    IResult selectLikeName(String content, boolean enabled);
+    IResult selectLikeName(String content, Boolean enabled);
 
     IResult updateByPrimaryKey(Job record);
 }

@@ -1,16 +1,13 @@
 package com.topsail.skeleton.system.rest;
 
 import com.topsail.skeleton.common.IResult;
-import com.topsail.skeleton.system.domain.Dept;
+import com.topsail.skeleton.system.domain.po.Dept;
 import com.topsail.skeleton.system.service.DeptService;
-import com.topsail.skeleton.system.service.dto.DeptDTO;
-import com.topsail.skeleton.system.util.TreeNode;
-import org.springframework.beans.BeanUtils;
+import com.topsail.skeleton.system.domain.dto.TreeNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

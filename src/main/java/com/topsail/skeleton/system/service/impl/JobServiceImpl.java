@@ -2,13 +2,12 @@ package com.topsail.skeleton.system.service.impl;
 
 import com.topsail.skeleton.common.IResult;
 import com.topsail.skeleton.common.Result;
-import com.topsail.skeleton.system.domain.Dept;
-import com.topsail.skeleton.system.domain.Dict;
-import com.topsail.skeleton.system.domain.Job;
+import com.topsail.skeleton.system.domain.po.Dept;
+import com.topsail.skeleton.system.domain.po.Job;
 import com.topsail.skeleton.system.mapper.DeptMapper;
 import com.topsail.skeleton.system.mapper.JobMapper;
 import com.topsail.skeleton.system.service.JobService;
-import com.topsail.skeleton.system.service.dto.JobDTO;
+import com.topsail.skeleton.system.domain.dto.JobDTO;
 import com.topsail.skeleton.util.ValidationUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,7 +76,7 @@ public class JobServiceImpl implements JobService {
     }
 
     @Override
-    public IResult selectLikeName(String content, boolean enabled) {
+    public IResult selectLikeName(String content, Boolean enabled) {
 
         List<JobDTO> jobDTOList = new ArrayList<>();
         List<Job> jobs = jobMapper.selectLikeName(content, enabled);

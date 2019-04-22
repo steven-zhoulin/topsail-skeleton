@@ -1,8 +1,8 @@
 package com.topsail.skeleton.system.rest;
 
-import com.topsail.skeleton.system.domain.Permission;
+import com.topsail.skeleton.system.domain.po.Permission;
 import com.topsail.skeleton.system.service.PermissionService;
-import com.topsail.skeleton.system.util.TreeNode;
+import com.topsail.skeleton.system.domain.dto.TreeNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

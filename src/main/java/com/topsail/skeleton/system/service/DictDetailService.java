@@ -3,7 +3,7 @@ package com.topsail.skeleton.system.service;
 import com.topsail.skeleton.common.IResult;
 import com.topsail.skeleton.exception.AlreadyExistException;
 import com.topsail.skeleton.exception.NotFoundException;
-import com.topsail.skeleton.system.domain.DictDetail;
+import com.topsail.skeleton.system.domain.po.DictDetail;
 
 /**
  * @author Steven

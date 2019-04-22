@@ -1,6 +1,6 @@
 package com.topsail.skeleton.system.rest;
 
-import com.topsail.skeleton.system.domain.Role;
+import com.topsail.skeleton.system.domain.po.Role;
 import com.topsail.skeleton.system.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

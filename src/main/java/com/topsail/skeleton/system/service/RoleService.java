@@ -1,6 +1,6 @@
 package com.topsail.skeleton.system.service;
 
-import com.topsail.skeleton.system.domain.Role;
+import com.topsail.skeleton.system.domain.po.Role;
 
 import java.util.List;
 

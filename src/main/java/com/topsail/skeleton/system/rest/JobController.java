@@ -1,7 +1,7 @@
 package com.topsail.skeleton.system.rest;
 
 import com.topsail.skeleton.common.IResult;
-import com.topsail.skeleton.system.domain.Job;
+import com.topsail.skeleton.system.domain.po.Job;
 import com.topsail.skeleton.system.service.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

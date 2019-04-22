@@ -1,7 +1,8 @@
 package com.topsail.skeleton.system.service;
 
 import com.topsail.skeleton.common.IResult;
-import com.topsail.skeleton.system.util.TreeNode;
+import com.topsail.skeleton.system.domain.dto.TreeNode;
+import com.topsail.skeleton.system.domain.po.Dept;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ public interface DeptService {
 
     IResult deleteByPrimaryKey(Long id);
 
-    IResult insert(com.topsail.skeleton.system.domain.Dept record);
+    IResult insert(Dept record);
 
     IResult selectByPrimaryKey(Long id);
 
@@ -20,7 +21,7 @@ public interface DeptService {
 
     List<TreeNode> selectLikeName(String content, Boolean enabled);
 
-    IResult updateByPrimaryKey(com.topsail.skeleton.system.domain.Dept record);
+    IResult updateByPrimaryKey(Dept record);
 
     List<TreeNode> getDeptTree(boolean isOpen);
 

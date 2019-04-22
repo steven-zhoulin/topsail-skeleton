@@ -1,7 +1,7 @@
 package com.topsail.skeleton.system.service;
 
-import com.topsail.skeleton.system.domain.Permission;
-import com.topsail.skeleton.system.util.TreeNode;
+import com.topsail.skeleton.system.domain.po.Permission;
+import com.topsail.skeleton.system.domain.dto.TreeNode;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package com.topsail.skeleton.system.rest;
 
-import com.topsail.skeleton.system.domain.User;
+import com.topsail.skeleton.system.domain.po.User;
 import com.topsail.skeleton.system.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

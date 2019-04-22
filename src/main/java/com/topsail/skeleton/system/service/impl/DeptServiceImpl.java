@@ -2,14 +2,13 @@ package com.topsail.skeleton.system.service.impl;
 
 import com.topsail.skeleton.common.IResult;
 import com.topsail.skeleton.common.Result;
-import com.topsail.skeleton.system.domain.Dept;
+import com.topsail.skeleton.system.domain.po.Dept;
 import com.topsail.skeleton.system.mapper.DeptMapper;
 import com.topsail.skeleton.system.service.DeptService;
-import com.topsail.skeleton.system.service.dto.DeptDTO;
+import com.topsail.skeleton.system.domain.dto.DeptDTO;
 import com.topsail.skeleton.system.util.TreeBuilder;
-import com.topsail.skeleton.system.util.TreeNode;
+import com.topsail.skeleton.system.domain.dto.TreeNode;
 import com.topsail.skeleton.util.ValidationUtil;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,7 +43,7 @@ public class DeptServiceImpl implements DeptService {
 
     @Override
     public IResult selectByPrimaryKey(Long id) {
-        com.topsail.skeleton.system.domain.Dept dept = deptMapper.selectByPrimaryKey(id);
+        Dept dept = deptMapper.selectByPrimaryKey(id);
         ValidationUtil.isNotFound(dept, ENTITY_NAME, "id", id);
         return Result.success(dept);
     }
@@ -57,7 +56,7 @@ public class DeptServiceImpl implements DeptService {
     }
 
     @Override
-    public IResult updateByPrimaryKey(com.topsail.skeleton.system.domain.Dept record) {
+    public IResult updateByPrimaryKey(Dept record) {
         int ret = deptMapper.updateByPrimaryKey(record);
         ValidationUtil.isNotFound(ret, ENTITY_NAME, "id", record.getId());
         return Result.success();

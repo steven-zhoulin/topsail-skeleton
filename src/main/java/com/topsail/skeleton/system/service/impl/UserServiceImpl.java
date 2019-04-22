@@ -2,7 +2,7 @@ package com.topsail.skeleton.system.service.impl;
 
 import com.topsail.skeleton.exception.AlreadyExistException;
 import com.topsail.skeleton.exception.NotFoundException;
-import com.topsail.skeleton.system.domain.User;
+import com.topsail.skeleton.system.domain.po.User;
 import com.topsail.skeleton.system.mapper.UserMapper;
 import com.topsail.skeleton.system.service.UserService;
 import com.topsail.skeleton.common.ErrorCode;

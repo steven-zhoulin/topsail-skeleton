@@ -1,6 +1,6 @@
 package com.topsail.skeleton.system.mapper;
 
-import com.topsail.skeleton.system.domain.Permission;
+import com.topsail.skeleton.system.domain.po.Permission;
 
 import java.util.List;
 

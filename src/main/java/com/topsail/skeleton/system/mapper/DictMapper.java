@@ -1,6 +1,6 @@
 package com.topsail.skeleton.system.mapper;
 
-import com.topsail.skeleton.system.domain.Dict;
+import com.topsail.skeleton.system.domain.po.Dict;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package com.topsail.skeleton.system.mapper;
 
-import com.topsail.skeleton.system.domain.QuartzJob;
+import com.topsail.skeleton.system.domain.po.QuartzJob;
 import java.util.List;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;

@@ -2,7 +2,7 @@ package com.topsail.skeleton.system.service.impl;
 
 import com.topsail.skeleton.common.IResult;
 import com.topsail.skeleton.common.Result;
-import com.topsail.skeleton.system.domain.Dict;
+import com.topsail.skeleton.system.domain.po.Dict;
 import com.topsail.skeleton.system.mapper.DictMapper;
 import com.topsail.skeleton.system.service.DictService;
 import com.topsail.skeleton.util.ValidationUtil;
