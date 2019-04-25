@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import lombok.extern.slf4j.Slf4j;
 
-import com.hitech.skeleton.common.IResult;
-import com.hitech.skeleton.${package.ModuleName}.service.${table.serviceName};
+import com.topsail.skeleton.common.IResult;
+import com.topsail.skeleton.modules.${package.ModuleName}.service.${table.serviceName};
 
 <#if restControllerStyle>
 import org.springframework.web.bind.annotation.RestController;

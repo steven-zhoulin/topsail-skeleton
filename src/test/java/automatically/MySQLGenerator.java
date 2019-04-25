@@ -37,7 +37,7 @@ public class MySQLGenerator {
     private static String username = "root";
     private static String password = "1q1w1e1r";
 
-    private static String parentPackege = "com.topsail.skeleton";
+    private static String parentPackege = "com.topsail.skeleton.modules";
 
     /**
      * 以下不用修改
