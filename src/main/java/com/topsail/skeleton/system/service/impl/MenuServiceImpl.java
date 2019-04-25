@@ -4,7 +4,7 @@ import com.topsail.skeleton.system.domain.po.Menu;
 import com.topsail.skeleton.system.mapper.MenuMapper;
 import com.topsail.skeleton.system.service.MenuService;
 import com.topsail.skeleton.system.domain.dto.MenuDTO;
-import com.topsail.skeleton.system.util.TreeBuilder;
+import com.topsail.skeleton.util.TreeBuilder;
 import com.topsail.skeleton.system.domain.dto.TreeNode;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;

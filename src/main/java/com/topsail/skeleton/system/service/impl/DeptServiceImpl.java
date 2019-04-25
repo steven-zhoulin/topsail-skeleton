@@ -6,7 +6,7 @@ import com.topsail.skeleton.system.domain.po.Dept;
 import com.topsail.skeleton.system.mapper.DeptMapper;
 import com.topsail.skeleton.system.service.DeptService;
 import com.topsail.skeleton.system.domain.dto.DeptDTO;
-import com.topsail.skeleton.system.util.TreeBuilder;
+import com.topsail.skeleton.util.TreeBuilder;
 import com.topsail.skeleton.system.domain.dto.TreeNode;
 import com.topsail.skeleton.util.ValidationUtil;
 import org.springframework.beans.BeanUtils;

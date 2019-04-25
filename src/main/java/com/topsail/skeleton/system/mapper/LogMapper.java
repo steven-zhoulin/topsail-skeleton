@@ -77,7 +77,7 @@ public interface LogMapper {
     List<Log> selectAll();
 
     @Update({
-        "updateByPrimaryKey log",
+        "update log",
         "set create_time = #{createTime,jdbcType=TIMESTAMP},",
           "description = #{description,jdbcType=VARCHAR},",
           "log_type = #{logType,jdbcType=VARCHAR},",
