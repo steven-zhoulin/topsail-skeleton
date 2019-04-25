@@ -1,6 +1,6 @@
 package com.topsail.skeleton.util;
 
-import com.topsail.skeleton.system.domain.dto.TreeNode;
+import com.topsail.skeleton.common.TreeNode;
 
 import java.util.ArrayList;
 import java.util.HashMap;

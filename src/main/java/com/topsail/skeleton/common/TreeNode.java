@@ -1,4 +1,4 @@
-package com.topsail.skeleton.system.domain.dto;
+package com.topsail.skeleton.common;
 
 import lombok.Data;
 
