@@ -31,13 +31,13 @@ public class MySQLGenerator {
      */
     private static String author = "Steven";
 
-    private static String url = "jdbc:mysql://39.106.228.124:3306/hitech?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC";
+    private static String url = "jdbc:mysql://localhost:3306/spring?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC";
     private static String driver = "com.mysql.cj.jdbc.Driver";
-    private static String schemaName = "hitech";
-    private static String username = "hitech";
-    private static String password = "20190422";
+    private static String schemaName = "spring";
+    private static String username = "root";
+    private static String password = "1q1w1e1r";
 
-    private static String parentPackege = "com.hitech.skeleton";
+    private static String parentPackege = "com.topsail.skeleton";
 
     /**
      * 以下不用修改
