@@ -26,12 +26,12 @@ import ${superControllerClassPackage};
  * @author ${author}
  * @since ${date}
  */
+@Slf4j
 <#if restControllerStyle>
 @RestController
 <#else>
 @Controller
 </#if>
-@Slf4j
 @RequestMapping("/api<#if package.ModuleName??>/${package.ModuleName}</#if>/<#if controllerMappingHyphenStyle??>${controllerMappingHyphen}<#else>${table.entityPath}</#if>")
 <#if kotlin>
 class ${table.controllerName}<#if superControllerClass??> : ${superControllerClass}()</#if>
@@ -42,8 +42,10 @@ public class ${table.controllerName} extends ${superControllerClass} {
 public class ${table.controllerName} {
 </#if>
 
+    private static final String ENTITY_NAME = "${package.ModuleName}_${table.entityPath}";
+
     @Autowired
-    ${table.serviceName} i${entity}Service;
+    private ${table.serviceName} i${entity}Service;
 
     @GetMapping("{id}")
     public IResult getById(Long id) {

@@ -11,6 +11,23 @@ public final class ValidationUtil {
     /**
      * 判断是否找不到
      *
+     * @param b
+     * @param entity
+     * @param parameter
+     * @param value
+     */
+    public static void isNotFound(boolean b, String entity, String parameter, Object value) {
+        if (!b) {
+            String msg = entity
+                    + " is not found! "
+                    + "{ " + parameter + ":" + value.toString() + " }";
+            throw new NotFoundException(msg, 404);
+        }
+    }
+
+    /**
+     * 判断是否找不到
+     *
      * @param object
      * @param entity
      * @param parameter
